@@ -1,0 +1,52 @@
+footer {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--bg-color);
+  padding: 2rem;
+}
+
+footer > * {
+  margin: 0 0.5rem;
+}
+
+footer .about {
+  display: grid;
+  align-items: space-between;
+}
+
+footer .nav-brand {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+footer .heading {
+  margin-bottom: 1rem;
+}
+
+footer .social-icons {
+  margin-left: auto;
+}
+
+footer > * .sub-heading {
+  margin: 0.25rem 0;
+}
+
+.social i,
+.sub-heading i {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0.5rem;
+  }
+
+  footer .heading {
+    margin: 1rem 0;
+  }
+}
