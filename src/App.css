@@ -9,9 +9,16 @@
 }
 
 body {
+  overflow-x: hidden;
+  color: var(--text-color);
+}
+
+.page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden;
-  color: var(--text-color);
+}
+
+section.main-section {
+  flex-grow: 1;
 }

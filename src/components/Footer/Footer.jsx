@@ -29,13 +29,13 @@ const Footer = () => {
       <div className="quick-links">
         <div className="heading">Quick Links</div>
         <div className="sub-heading">
-          <a href="/pages/products.html">Products</a>
+          <Link to="/products">Products</Link>
         </div>
         <div className="sub-heading">
-          <a href="/pages/wishlist.html">Wishlist</a>
+          <Link to="/wishlist">Wishlist</Link>
         </div>
         <div className="sub-heading">
-          <a href="/pages/cart.html">Cart</a>
+          <Link to="/cart">Cart</Link>
         </div>
       </div>
 

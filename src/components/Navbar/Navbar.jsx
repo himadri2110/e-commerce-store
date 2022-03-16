@@ -13,20 +13,20 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        <a href="/pages/login.html" className="icon login" title="Login">
+        <Link to="/" className="icon login" title="Login">
           <i className="fa-solid fa-sign-in"></i>
           <span>Login</span>
-        </a>
+        </Link>
 
-        <a href="/pages/wishlist.html" className="icon" title="Wishlist">
+        <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
           <span className="badge">4</span>
-        </a>
+        </Link>
 
-        <a href="/pages/cart.html" className="icon" title="Cart">
+        <Link to="/cart" className="icon" title="Cart">
           <i className="fa-solid fa-shopping-cart"></i>
           <span className="badge">2</span>
-        </a>
+        </Link>
       </div>
     </nav>
   );
