@@ -1,9 +1,12 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import { useProducts } from "../../contexts/productContext";
 
 const Footer = () => {
+  const { showFilter } = useProducts();
+
   return (
-    <footer>
+    <footer className={`${showFilter ? "hide-div" : null}`}>
       <div className="about">
         <Link to="/" className="nav-brand">
           Loafer

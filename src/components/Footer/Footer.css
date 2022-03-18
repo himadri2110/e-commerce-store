@@ -49,4 +49,8 @@ footer > * .sub-heading {
   footer .heading {
     margin: 1rem 0;
   }
+
+  .hide-div {
+    display: none;
+  }
 }
