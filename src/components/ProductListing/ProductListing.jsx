@@ -1,7 +1,5 @@
 import "./ProductListing.css";
 import { ProductCard } from "../ProductCard/ProductCard";
-import { useEffect } from "react";
-import axios from "axios";
 import { useProducts } from "../../contexts/productContext";
 import {
   getSortedProducts,
@@ -14,15 +12,7 @@ import {
 } from "../../utils/productFilters";
 
 const ProductListing = () => {
-  const {
-    productState,
-    productDispatch,
-    filterTypes,
-    toggleFilter,
-    showFilter,
-  } = useProducts();
-
-  const { DISPLAY_PRODUCTS } = filterTypes;
+  const { productState, toggleFilter, showFilter } = useProducts();
 
   const {
     products,
@@ -49,25 +39,6 @@ const ProductListing = () => {
     fastDeliveryProducts
   );
   const filteredProducts = priceRangeProducts;
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("/api/products");
-
-      data.products = data.products.map((product) => ({
-        ...product,
-        discountedPrice: (
-          product.price -
-          (product.price * product.discount) / 100
-        ).toFixed(0),
-      }));
-
-      productDispatch({
-        type: DISPLAY_PRODUCTS,
-        payload: { data: data.products },
-      });
-    })();
-  }, []);
 
   return (
     <section className={`product-wrapper ${showFilter ? "hide-div" : null}`}>
