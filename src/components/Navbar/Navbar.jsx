@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="nav-bar">
       <Link to="/" className="nav-brand">
-        Loafer
+        Essence
       </Link>
 
       <div className="nav-search input input-primary">

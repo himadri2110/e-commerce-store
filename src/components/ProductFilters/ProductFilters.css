@@ -1,0 +1,124 @@
+.product-sidebar,
+.product-wrapper {
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+.product-wrapper {
+  padding: 1rem 2rem;
+}
+
+.product-sidebar {
+  border-right: 1px solid var(--bg-secondary);
+}
+
+.product-sidebar .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: initial;
+}
+
+.product-sidebar .heading-3 {
+  font-size: var(--heading-3);
+  font-weight: bold;
+}
+
+.product-sidebar .clear-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide filter icon on large screens */
+
+.product-sidebar button {
+  display: none;
+  padding: 0;
+}
+
+.product-sidebar button {
+  margin-left: 0.5rem;
+}
+
+.product-sidebar .clear-filter {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: underline;
+}
+
+.filter-wrapper input[type="radio"],
+.filter-wrapper input[type="checkbox"],
+.filter-wrapper input[type="range"] {
+  accent-color: var(--primary-color);
+}
+
+.filter-wrapper,
+.title {
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.filter-wrapper .filter-title {
+  font-size: var(--heading-3);
+}
+
+.filter-wrapper .filter-value {
+  padding: 0.5rem 0;
+  font-size: var(--heading-4);
+  color: var(--text-secondary);
+}
+
+.filter-wrapper i {
+  color: var(--primary-color);
+}
+
+.filter-category > *,
+.filter-rating > *,
+.filter-sort > * {
+  display: block;
+}
+
+.filter-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-price + input {
+  width: 100%;
+}
+
+/* MEDIA QUERIES PENDING */
+
+@media screen and (max-width: 650px) {
+  .product-sidebar {
+    display: none;
+    padding: 0;
+  }
+
+  .filter-wrapper,
+  .title {
+    padding: 0.5rem 1rem;
+  }
+
+  .product-sidebar button {
+    display: block;
+  }
+
+  .clear-wrapper i {
+    color: var(--primary-color);
+  }
+
+  .show-filter {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 75vh;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid var(--bg-secondary);
+  }
+
+  .overflowY-hidden {
+    overflow-y: hidden;
+  }
+}
