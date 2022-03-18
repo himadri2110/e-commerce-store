@@ -14,8 +14,15 @@ import {
 } from "../../utils/productFilters";
 
 const ProductListing = () => {
-  const { productState, productDispatch, toggleFilter, showFilter } =
-    useProducts();
+  const {
+    productState,
+    productDispatch,
+    filterTypes,
+    toggleFilter,
+    showFilter,
+  } = useProducts();
+
+  const { DISPLAY_PRODUCTS } = filterTypes;
 
   const {
     products,
@@ -56,7 +63,7 @@ const ProductListing = () => {
       }));
 
       productDispatch({
-        type: "DISPLAY_PRODUCTS",
+        type: DISPLAY_PRODUCTS,
         payload: { data: data.products },
       });
     })();

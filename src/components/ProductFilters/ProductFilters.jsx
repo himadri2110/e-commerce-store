@@ -2,8 +2,24 @@ import "./ProductFilters.css";
 import { useProducts } from "../../contexts/productContext";
 
 const ProductFilters = () => {
-  const { productState, productDispatch, toggleFilter, showFilter } =
-    useProducts();
+  const {
+    productState,
+    productDispatch,
+    filterTypes,
+    toggleFilter,
+    showFilter,
+  } = useProducts();
+
+  const {
+    BRAND,
+    CATEGORY,
+    SORT_BY,
+    IN_STOCK,
+    FAST_DELIVERY,
+    RATING,
+    PRICE_RANGE,
+    CLEAR_FILTERS,
+  } = filterTypes;
 
   return (
     <aside className={`product-sidebar ${showFilter ? "show-filter" : null}`}>
@@ -15,7 +31,7 @@ const ProductFilters = () => {
             className="clear-filter"
             onClick={() =>
               productDispatch({
-                type: "CLEAR_FILTERS",
+                type: CLEAR_FILTERS,
                 payload: { data: productState.products },
               })
             }
@@ -50,7 +66,7 @@ const ProductFilters = () => {
               value={productState.priceRange}
               onChange={(e) =>
                 productDispatch({
-                  type: "PRICE_RANGE",
+                  type: PRICE_RANGE,
                   payload: { value: e.target.value },
                 })
               }
@@ -76,7 +92,7 @@ const ProductFilters = () => {
                 value="FOGG"
                 onChange={(e) =>
                   productDispatch({
-                    type: "BRAND",
+                    type: BRAND,
                     payload: { value: e.target.value },
                   })
                 }
@@ -90,7 +106,7 @@ const ProductFilters = () => {
                 value="DENVER"
                 onChange={(e) =>
                   productDispatch({
-                    type: "BRAND",
+                    type: BRAND,
                     payload: { value: e.target.value },
                   })
                 }
@@ -104,7 +120,7 @@ const ProductFilters = () => {
                 value="THE MAN COMPANY"
                 onChange={(e) =>
                   productDispatch({
-                    type: "BRAND",
+                    type: BRAND,
                     payload: { value: e.target.value },
                   })
                 }
@@ -118,7 +134,7 @@ const ProductFilters = () => {
                 value="ENVY"
                 onChange={(e) =>
                   productDispatch({
-                    type: "BRAND",
+                    type: BRAND,
                     payload: { value: e.target.value },
                   })
                 }
@@ -132,7 +148,7 @@ const ProductFilters = () => {
                 value="AJMAL"
                 onChange={(e) =>
                   productDispatch({
-                    type: "BRAND",
+                    type: BRAND,
                     payload: { value: e.target.value },
                   })
                 }
@@ -152,7 +168,7 @@ const ProductFilters = () => {
                 checked={productState.category.includes("men")}
                 onChange={(e) =>
                   productDispatch({
-                    type: "CATEGORY",
+                    type: CATEGORY,
                     payload: { value: e.target.value },
                   })
                 }
@@ -166,7 +182,7 @@ const ProductFilters = () => {
                 checked={productState.category.includes("women")}
                 onChange={(e) =>
                   productDispatch({
-                    type: "CATEGORY",
+                    type: CATEGORY,
                     payload: { value: e.target.value },
                   })
                 }
@@ -180,7 +196,7 @@ const ProductFilters = () => {
                 checked={productState.category.includes("men & women")}
                 onChange={(e) =>
                   productDispatch({
-                    type: "CATEGORY",
+                    type: CATEGORY,
                     payload: { value: e.target.value },
                   })
                 }
@@ -199,7 +215,7 @@ const ProductFilters = () => {
                 name="rating"
                 checked={productState.rating === 4}
                 onChange={() =>
-                  productDispatch({ type: "RATING", payload: { rating: 4 } })
+                  productDispatch({ type: RATING, payload: { rating: 4 } })
                 }
               />{" "}
               4 <i className="fa-solid fa-star"></i> & above
@@ -210,7 +226,7 @@ const ProductFilters = () => {
                 name="rating"
                 checked={productState.rating === 3}
                 onChange={() =>
-                  productDispatch({ type: "RATING", payload: { rating: 3 } })
+                  productDispatch({ type: RATING, payload: { rating: 3 } })
                 }
               />{" "}
               3 <i className="fa-solid fa-star"></i> & above
@@ -221,7 +237,7 @@ const ProductFilters = () => {
                 name="rating"
                 checked={productState.rating === 2}
                 onChange={() =>
-                  productDispatch({ type: "RATING", payload: { rating: 2 } })
+                  productDispatch({ type: RATING, payload: { rating: 2 } })
                 }
               />{" "}
               2 <i className="fa-solid fa-star"></i> & above
@@ -232,7 +248,7 @@ const ProductFilters = () => {
                 name="rating"
                 checked={productState.rating === 1}
                 onChange={() =>
-                  productDispatch({ type: "RATING", payload: { rating: 1 } })
+                  productDispatch({ type: RATING, payload: { rating: 1 } })
                 }
               />{" "}
               1 <i className="fa-solid fa-star"></i> & above
@@ -250,7 +266,7 @@ const ProductFilters = () => {
                 checked={productState.sortBy === "HIGH_TO_LOW"}
                 onChange={() =>
                   productDispatch({
-                    type: "SORT_BY",
+                    type: SORT_BY,
                     payload: { value: "HIGH_TO_LOW" },
                   })
                 }
@@ -264,7 +280,7 @@ const ProductFilters = () => {
                 checked={productState.sortBy === "LOW_TO_HIGH"}
                 onChange={() =>
                   productDispatch({
-                    type: "SORT_BY",
+                    type: SORT_BY,
                     payload: { value: "LOW_TO_HIGH" },
                   })
                 }
@@ -283,7 +299,7 @@ const ProductFilters = () => {
                 checked={productState.inStock}
                 onChange={(e) =>
                   productDispatch({
-                    type: "IN_STOCK",
+                    type: IN_STOCK,
                     payload: { checked: e.target.checked },
                   })
                 }
@@ -296,7 +312,7 @@ const ProductFilters = () => {
                 checked={productState.fastDelivery}
                 onChange={(e) =>
                   productDispatch({
-                    type: "FAST_DELIVERY",
+                    type: FAST_DELIVERY,
                     payload: { checked: e.target.checked },
                   })
                 }

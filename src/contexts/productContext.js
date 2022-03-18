@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useReducer } from "react";
 import { productReducer, initialProducts } from "../reducers/productReducer";
+import { filterTypes } from "../constants/filterTypes";
 
 const ProductContext = createContext();
 
@@ -17,7 +18,13 @@ const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ productState, productDispatch, toggleFilter, showFilter }}
+      value={{
+        productState,
+        productDispatch,
+        filterTypes,
+        toggleFilter,
+        showFilter,
+      }}
     >
       {children}
     </ProductContext.Provider>
