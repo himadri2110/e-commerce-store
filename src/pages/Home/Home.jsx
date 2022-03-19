@@ -45,7 +45,7 @@ const Home = () => {
 
           <div className="service">
             <div className="icon">
-              <i class="fa-solid fa-truck-fast"></i>
+              <i className="fa-solid fa-truck-fast"></i>
             </div>
 
             <div className="text">
@@ -66,10 +66,10 @@ const Home = () => {
           </div>
         </div>
 
-        <div class="featured-category">
-          <div class="heading-2">Featured:</div>
+        <div className="featured-category">
+          <div className="heading-2">Featured:</div>
 
-          <div class="grid grid-two-col featured-grid">
+          <div className="grid grid-two-col featured-grid">
             <HorizontalCard product={productOne} />
             <HorizontalCard product={productTwo} />
           </div>
