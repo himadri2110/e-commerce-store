@@ -9,12 +9,10 @@ const Footer = () => {
     <footer className={`${showFilter ? "hide-div" : null}`}>
       <div className="about">
         <Link to="/" className="nav-brand">
-          Loafer
+          Essence
         </Link>
 
-        <div className="text">
-          Shop exclusive stylish and comfortable footwear for all occasions
-        </div>
+        <div className="text">Choose from our wide variety of fragrances</div>
 
         <div className="social">
           <a href="https://github.com/himadri2110" target="_blank">
@@ -52,7 +50,7 @@ const Footer = () => {
           <i className="fa fa-phone"></i>+91 21200 21200
         </div>
         <div className="sub-heading e-mail">
-          <i className="fa fa-envelope"></i>support@loafer.com
+          <i className="fa fa-envelope"></i>support@essence.com
         </div>
       </div>
     </footer>
