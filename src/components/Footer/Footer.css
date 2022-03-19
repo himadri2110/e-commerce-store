@@ -25,6 +25,10 @@ footer .heading {
   margin-bottom: 1rem;
 }
 
+footer .social {
+  margin-top: 0.5rem;
+}
+
 footer .social-icons {
   margin-left: auto;
 }
