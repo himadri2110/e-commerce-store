@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
 const Navbar = () => {
-  const { isAuth } = useAuth();
+  const { isAuth, setIsAuth } = useAuth();
 
   return (
     <nav className="nav-bar">
@@ -22,7 +22,12 @@ const Navbar = () => {
             <span>Login</span>
           </Link>
         ) : (
-          <Link to="/logout" className="icon logout" title="Logout">
+          <Link
+            to="/logout"
+            className="icon logout"
+            title="Logout"
+            onClick={() => setIsAuth(false)}
+          >
             <i className="fa-solid fa-sign-out"></i>
             <span>Logout</span>
           </Link>
