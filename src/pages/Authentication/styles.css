@@ -99,6 +99,20 @@
   color: var(--primary-color);
 }
 
+.input-error-msg {
+  font-size: 0.8rem;
+}
+
+form .btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.link {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 480px) {

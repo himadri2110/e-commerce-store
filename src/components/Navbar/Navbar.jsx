@@ -1,7 +1,10 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
 const Navbar = () => {
+  const { isAuth } = useAuth();
+
   return (
     <nav className="nav-bar">
       <Link to="/" className="nav-brand">
@@ -13,10 +16,17 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        <Link to="/login" className="icon login" title="Login">
-          <i className="fa-solid fa-sign-in"></i>
-          <span>Login</span>
-        </Link>
+        {!isAuth ? (
+          <Link to="/login" className="icon login" title="Login">
+            <i className="fa-solid fa-sign-in"></i>
+            <span>Login</span>
+          </Link>
+        ) : (
+          <Link to="/logout" className="icon logout" title="Logout">
+            <i className="fa-solid fa-sign-out"></i>
+            <span>Logout</span>
+          </Link>
+        )}
 
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
