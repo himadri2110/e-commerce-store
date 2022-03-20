@@ -26,7 +26,10 @@ const Navbar = () => {
             to="/logout"
             className="icon logout"
             title="Logout"
-            onClick={() => setIsAuth(false)}
+            onClick={() => {
+              localStorage.removeItem("token");
+              setIsAuth(false);
+            }}
           >
             <i className="fa-solid fa-sign-out"></i>
             <span>Logout</span>
