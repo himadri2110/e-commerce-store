@@ -4,9 +4,12 @@ import { Footer } from "../../../components/Footer/Footer";
 import "../styles.css";
 import { useAuth } from "../../../contexts/authContext";
 import { loginService } from "../../../services/loginService";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState({});
+  const [hide, setHide] = useState({ pwd: true });
+
   const { setIsAuth, setToken } = useAuth();
 
   const loginHandler = async (e) => {
@@ -56,7 +59,7 @@ const Login = () => {
                 <label className="input-label">Password</label>
                 <div className="toggle-pwd">
                   <input
-                    type="password"
+                    type={`${hide.pwd ? "password" : "text"}`}
                     placeholder="Type here..."
                     value={loginInput.password || ""}
                     onChange={(e) =>
@@ -67,7 +70,12 @@ const Login = () => {
                     }
                     required
                   />
-                  <i className="fa fa-eye"></i>
+                  <i
+                    className={`fa-solid ${
+                      hide.pwd ? "fa-eye" : "fa-eye-slash"
+                    }`}
+                    onClick={() => setHide({ ...hide, pwd: !hide.pwd })}
+                  ></i>
                 </div>
               </div>
 
@@ -90,10 +98,10 @@ const Login = () => {
           </div>
 
           <div className="card-action">
-            <span>New to Loafer?</span>
-            <a href="/pages/signup.html" className="link-primary">
+            <span>New to Loafer? </span>
+            <Link to="/signup" className="link">
               SignUp
-            </a>
+            </Link>
           </div>
         </div>
       </section>

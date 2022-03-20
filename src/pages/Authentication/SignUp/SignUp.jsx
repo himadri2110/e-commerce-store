@@ -5,6 +5,7 @@ import { useState } from "react";
 import { signupService } from "../../../services/signupService";
 
 import { useAuth } from "../../../contexts/authContext";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [signupInput, setSignupInput] = useState({});
@@ -136,9 +137,9 @@ const SignUp = () => {
 
           <div className="card-action">
             <span>Already have an account? </span>
-            <a href="/pages/login.html" className="link">
+            <Link to="/login" className="link">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </section>
