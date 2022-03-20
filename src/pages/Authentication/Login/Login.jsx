@@ -12,6 +12,11 @@ const Login = () => {
 
   const { setIsAuth, setToken } = useAuth();
 
+  const loginInputHandler = (e) => {
+    const { name, value } = e.target;
+    setLoginInput({ ...loginInput, [name]: value });
+  };
+
   const loginHandler = async (e) => {
     e.preventDefault();
 
@@ -45,13 +50,9 @@ const Login = () => {
                 <input
                   type="email"
                   placeholder="Type here..."
+                  name="email"
                   value={loginInput.email || ""}
-                  onChange={(e) =>
-                    setLoginInput(() => ({
-                      ...loginInput,
-                      email: e.target.value,
-                    }))
-                  }
+                  onChange={loginInputHandler}
                   required
                 />
               </div>
@@ -61,13 +62,9 @@ const Login = () => {
                   <input
                     type={`${hide.pwd ? "password" : "text"}`}
                     placeholder="Type here..."
+                    name="password"
                     value={loginInput.password || ""}
-                    onChange={(e) =>
-                      setLoginInput(() => ({
-                        ...loginInput,
-                        password: e.target.value,
-                      }))
-                    }
+                    onChange={loginInputHandler}
                     required
                   />
                   <i
