@@ -113,6 +113,10 @@ form .btn-disabled {
   text-decoration: underline;
 }
 
+form label span {
+  color: var(--danger-color);
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 480px) {

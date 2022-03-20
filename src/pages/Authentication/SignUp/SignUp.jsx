@@ -51,7 +51,9 @@ const SignUp = () => {
           <div className="card-content">
             <form className="form-group" onSubmit={signupHandler}>
               <div className="input-group input input-primary">
-                <label className="input-label">Email</label>
+                <label className="input-label">
+                  Email<span>*</span>
+                </label>
                 <input
                   type="email"
                   placeholder="Type here..."
@@ -63,7 +65,9 @@ const SignUp = () => {
               </div>
 
               <div className="input-group input input-primary">
-                <label className="input-label">FullName</label>
+                <label className="input-label">
+                  FullName<span>*</span>
+                </label>
                 <input
                   type="text"
                   placeholder="Type here..."
@@ -75,7 +79,9 @@ const SignUp = () => {
               </div>
 
               <div className="input-group input input-primary">
-                <label className="input-label">Password</label>
+                <label className="input-label">
+                  Password<span>*</span>
+                </label>
                 <div className="toggle-pwd">
                   <input
                     type={`${hide.pwd ? "password" : "text"}`}
@@ -94,7 +100,9 @@ const SignUp = () => {
               </div>
 
               <div className="input-group input input-primary">
-                <label className="input-label">Confirm Password</label>
+                <label className="input-label">
+                  Confirm Password<span>*</span>
+                </label>
                 <div className="toggle-pwd">
                   <input
                     type={`${hide.confirmPwd ? "password" : "text"}`}
