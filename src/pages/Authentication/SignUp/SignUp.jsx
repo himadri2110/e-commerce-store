@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [signupInput, setSignupInput] = useState({});
-  const { setIsAuth, setToken } = useAuth();
+  const { setIsAuth, setToken, navigate } = useAuth();
   const [hide, setHide] = useState({ pwd: true, confirmPwd: true });
   const [pwdMatch, setPwdMatch] = useState(true);
 
@@ -33,6 +33,8 @@ const SignUp = () => {
 
       setIsAuth(true);
       setSignupInput({ signupInput: "" });
+
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

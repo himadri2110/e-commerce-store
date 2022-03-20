@@ -10,7 +10,7 @@ const Login = () => {
   const [loginInput, setLoginInput] = useState({});
   const [hide, setHide] = useState({ pwd: true });
 
-  const { setIsAuth, setToken } = useAuth();
+  const { setIsAuth, setToken, navigate } = useAuth();
 
   const loginInputHandler = (e) => {
     const { name, value } = e.target;
@@ -28,6 +28,8 @@ const Login = () => {
 
       setLoginInput({ email: "", password: "" });
       setIsAuth(true);
+
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
