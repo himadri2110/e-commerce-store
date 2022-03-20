@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        <Link to="/" className="icon login" title="Login">
+        <Link to="/login" className="icon login" title="Login">
           <i className="fa-solid fa-sign-in"></i>
           <span>Login</span>
         </Link>
