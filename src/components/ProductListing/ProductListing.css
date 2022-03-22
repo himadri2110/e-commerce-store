@@ -1,7 +1,7 @@
 .product-main {
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
   gap: 1rem;
 }
 

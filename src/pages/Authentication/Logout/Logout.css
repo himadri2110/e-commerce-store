@@ -1,0 +1,27 @@
+.logout-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.logout-container .card-wrapper {
+  margin: auto;
+  padding: 1rem;
+  max-width: 600px;
+  border: 1px solid var(--bg-secondary);
+  text-align: center;
+}
+
+.card-wrapper > * {
+  padding: 0.5rem;
+}
+
+.card-wrapper .card-icon i {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.card-action i {
+  padding-right: 0.5rem;
+}
