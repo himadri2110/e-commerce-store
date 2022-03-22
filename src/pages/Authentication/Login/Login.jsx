@@ -29,7 +29,7 @@ const Login = () => {
       setLoginInput({ email: "", password: "" });
       setIsAuth(true);
 
-      navigate("/");
+      navigate(-1);
     } catch (err) {
       console.log(err);
     }

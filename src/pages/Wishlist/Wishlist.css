@@ -1,0 +1,74 @@
+.wishlist-wrapper {
+  max-width: 80%;
+  margin: auto;
+}
+
+.wishlist-wrapper .heading-3 {
+  font-size: var(--heading-3);
+  font-weight: bold;
+  text-align: center;
+}
+
+.wishlist-wrapper .product-container .product-main {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+.wishlist-wrapper .product-main > * {
+  margin: 0.5rem auto;
+}
+
+/* Card wrapper */
+
+.card-wrapper {
+  border: 1px solid var(--primary-color);
+  background-color: inherit;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+}
+
+.basic-card .card-heading,
+.basic-card .card-content {
+  padding: 0.5rem 0.5rem 0;
+}
+
+.basic-card .card-heading {
+  font-size: 1rem;
+}
+
+.card-content .price {
+  font-size: 1.1rem;
+}
+
+.card-content .previous-price,
+.card-content .discount {
+  font-size: 0.9rem;
+}
+
+.basic-card .card-action {
+  padding: 0.5rem;
+}
+
+.card-action > button {
+  padding: 0.25rem;
+}
+
+.card-w-dismiss .card-dismiss {
+  font-size: 1rem;
+}
+
+.card-w-dismiss .card-dismiss i {
+  color: var(--primary-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 480px) {
+  .wishlist-wrapper {
+    max-width: 90%;
+    margin: auto;
+  }
+}
