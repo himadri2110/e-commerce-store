@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       const { data } = await loginService(loginInput);
-
+      localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
       setToken(data.encodedToken);
 

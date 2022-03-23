@@ -53,20 +53,15 @@
 }
 
 .card-w-dismiss .card-dismiss i {
-  color: var(--primary-color);
   padding: 0.5rem;
   border-radius: 50%;
-}
-
-input.card-dismiss {
-  width: 0;
-  height: 0;
-  margin: 0;
-  opacity: 0;
 }
 
 .card-w-dismiss .card-dismiss:checked {
   background-color: var(--text-color);
 }
 
+.card-dismiss button {
+  border-radius: 50%;
+}
 /* MEDIA QUERIES PENDING */

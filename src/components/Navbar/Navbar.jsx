@@ -1,9 +1,11 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import { useWishlist } from "../../contexts/wishlistContext";
 
 const Navbar = () => {
   const { isAuth, setIsAuth } = useAuth();
+  const { wishlist } = useWishlist();
 
   return (
     <nav className="nav-bar">
@@ -28,6 +30,7 @@ const Navbar = () => {
             title="Logout"
             onClick={() => {
               localStorage.removeItem("token");
+              localStorage.setItem("isAuth", false);
               setIsAuth(false);
             }}
           >
@@ -38,7 +41,7 @@ const Navbar = () => {
 
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
-          <span className="badge">4</span>
+          <span className="badge">{wishlist.length}</span>
         </Link>
 
         <Link to="/cart" className="icon" title="Cart">

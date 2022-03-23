@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-.card-wrapper > * {
+.logout-container .card-wrapper > * {
   padding: 0.5rem;
 }
 
