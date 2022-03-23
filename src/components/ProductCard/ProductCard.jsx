@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
     <div className="card-wrapper basic-card card-w-dismiss">
       <div>
         <Link to="/">
-          <img src={image} className="card-img" alt="Perfume" />
+          <img src={image} className="card-img" alt={title} />
         </Link>
 
         <div className="card-dismiss">
