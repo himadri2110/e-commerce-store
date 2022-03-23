@@ -41,12 +41,12 @@ const Navbar = () => {
 
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
-          <span className="badge">{wishlist.length}</span>
+          {isAuth ? <span className="badge">{wishlist.length}</span> : null}
         </Link>
 
         <Link to="/cart" className="icon" title="Cart">
           <i className="fa-solid fa-shopping-cart"></i>
-          <span className="badge">2</span>
+          {isAuth ? <span className="badge">2</span> : null}
         </Link>
       </div>
     </nav>
