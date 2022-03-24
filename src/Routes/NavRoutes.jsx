@@ -15,7 +15,14 @@ const NavRoutes = () => {
       <Route path="/mockman" element={<Mockman />} />
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route
         path="/wishlist"
         element={
