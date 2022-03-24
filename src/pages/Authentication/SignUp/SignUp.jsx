@@ -28,6 +28,7 @@ const SignUp = () => {
     try {
       const { data } = await signupService(signupInput);
 
+      localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
       setToken(data.encodedToken);
 

@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken || "");
 
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <AuthContext.Provider

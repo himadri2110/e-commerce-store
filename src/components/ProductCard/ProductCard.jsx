@@ -1,18 +1,27 @@
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
+import { useWishlist } from "../../contexts/wishlistContext";
 
 const ProductCard = ({ product }) => {
-  const { title, price, discount, discountedPrice, image } = product;
+  const { _id, title, price, discount, discountedPrice, image } = product;
+  const { wishlist, toggleWishlist } = useWishlist();
+
+  const itemInWishlist = wishlist.find((item) => item._id === _id);
 
   return (
     <div className="card-wrapper basic-card card-w-dismiss">
       <div>
         <Link to="/">
-          <img src={image} className="card-img" alt="Heels" />
+          <img src={image} className="card-img" alt={title} />
         </Link>
 
         <div className="card-dismiss">
-          <i className="fa fa-heart"></i>
+          <button>
+            <i
+              className={itemInWishlist ? "fa fa-heart" : "fa fa-heart-o"}
+              onClick={() => toggleWishlist(product)}
+            ></i>
+          </button>
         </div>
 
         <div className="card-heading" title={title}>

@@ -7,6 +7,7 @@ import { Wishlist } from "../pages/Wishlist/Wishlist";
 import { Login } from "../pages/Authentication/Login/Login";
 import { SignUp } from "../pages/Authentication/SignUp/SignUp";
 import { Logout } from "../pages/Authentication/Logout/Logout";
+import { PrivateRoute } from "./PrivateRoute";
 
 const NavRoutes = () => {
   return (
@@ -15,7 +16,14 @@ const NavRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/wishlist" element={<Wishlist />} />
+      <Route
+        path="/wishlist"
+        element={
+          <PrivateRoute>
+            <Wishlist />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/logout" element={<Logout />} />

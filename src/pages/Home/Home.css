@@ -87,6 +87,10 @@
   gap: 1rem;
 }
 
+.featured-grid > * {
+  width: 100%;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 600px) {
