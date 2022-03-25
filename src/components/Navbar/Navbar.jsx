@@ -43,12 +43,16 @@ const Navbar = () => {
 
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
-          {isAuth ? <span className="badge">{wishlist.length}</span> : null}
+          {isAuth && wishlist.length > 0 ? (
+            <span className="badge">{wishlist.length}</span>
+          ) : null}
         </Link>
 
         <Link to="/cart" className="icon" title="Cart">
           <i className="fa-solid fa-shopping-cart"></i>
-          {isAuth ? <span className="badge">{cart.length}</span> : null}
+          {isAuth && cart.length > 0 ? (
+            <span className="badge">{cart.length}</span>
+          ) : null}
         </Link>
       </div>
     </nav>
