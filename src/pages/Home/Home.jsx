@@ -5,8 +5,12 @@ import { Footer } from "../../components/Footer/Footer";
 import { products } from "./../../backend/db/products";
 import { HorizontalCard } from "../../components/HorizontalCard/HorizontalCard";
 import { categories } from "../../backend/db/categories";
+import { useProducts } from "../../contexts/productContext";
 
 const Home = () => {
+  const { productState, productDispatch, filterTypes } = useProducts();
+  const { CATEGORY, CLEAR_FILTERS } = filterTypes;
+
   const [productOne, productTwo] = products;
 
   return (
@@ -73,8 +77,20 @@ const Home = () => {
           <div className="grid grid-three-col category-grid">
             {categories.map((category) => {
               return (
-                <Link to="/products">
-                  <div className="category-container">
+                <Link to="/products" key={category._id}>
+                  <div
+                    className="category-container"
+                    onClick={() => {
+                      productDispatch({
+                        type: CLEAR_FILTERS,
+                        payload: { data: productState.products },
+                      });
+                      productDispatch({
+                        type: CATEGORY,
+                        payload: { value: category.categoryName },
+                      });
+                    }}
+                  >
                     <img
                       className="resp-img"
                       src={category.image}

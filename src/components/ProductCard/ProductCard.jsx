@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      {!inStock ? <div class="overlay-text">Out of Stock</div> : null}
+      {!inStock ? <div className="overlay-text">Out of Stock</div> : null}
 
       <div className={`card-content ${!inStock ? "overlay-bg" : null}`}>
         <div className="product-price">
