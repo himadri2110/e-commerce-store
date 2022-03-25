@@ -64,4 +64,19 @@
 .card-dismiss button {
   border-radius: 50%;
 }
-/* MEDIA QUERIES PENDING */
+
+.card-wrapper.card-w-overlay {
+  pointer-events: none;
+  background-color: var(--bg-grey);
+}
+
+.card-wrapper.card-w-overlay .card-dismiss {
+  pointer-events: all;
+  background-color: initial;
+}
+
+.card-w-overlay .overlay-text {
+  font-size: 1rem;
+  width: 80%;
+  text-align: center;
+}

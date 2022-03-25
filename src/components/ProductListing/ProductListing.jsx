@@ -53,7 +53,7 @@ const ProductListing = () => {
               onClick={toggleFilter}
               title="Filters"
             >
-              <i className="fa fa-filter" aria-hidden="true"></i>
+              <i className="fa-solid fa-sliders" aria-hidden="true"></i>
             </button>
           </div>
 

@@ -5,7 +5,8 @@ import { useCart } from "../../contexts/cartContext";
 import { useAuth } from "../../contexts/authContext";
 
 const ProductCard = ({ product }) => {
-  const { _id, title, price, discount, discountedPrice, image } = product;
+  const { _id, title, price, discount, discountedPrice, image, inStock } =
+    product;
   const { wishlist, toggleWishlist } = useWishlist();
   const { cart, addToCartHandler } = useCart();
   const { navigate } = useAuth();
@@ -14,8 +15,12 @@ const ProductCard = ({ product }) => {
   const itemInCart = cart.find((item) => item._id === _id);
 
   return (
-    <div className="card-wrapper basic-card card-w-dismiss">
-      <div>
+    <div
+      className={`card-wrapper basic-card card-w-dismiss ${
+        !inStock ? "card-w-overlay" : null
+      }`}
+    >
+      <div className={`${!inStock ? "overlay-bg" : null}`}>
         <Link to="/">
           <img src={image} className="card-img" alt={title} />
         </Link>
@@ -34,7 +39,9 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <div className="card-content">
+      {!inStock ? <div class="overlay-text">Out of Stock</div> : null}
+
+      <div className={`card-content ${!inStock ? "overlay-bg" : null}`}>
         <div className="product-price">
           <div className="price">&#8377; {discountedPrice}</div>
           <div className="previous-price">&#8377; {price}</div>
@@ -42,7 +49,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <div className="card-action">
+      <div className={`card-action ${!inStock ? "overlay-bg" : null}`}>
         <button
           className="btn btn-primary"
           onClick={() =>
