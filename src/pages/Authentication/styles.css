@@ -34,6 +34,10 @@
   padding: 0.25rem 0.5rem;
 }
 
+.login-container button {
+  margin-top: 0.5rem;
+}
+
 .login-container .input-checkbox {
   line-height: var(--line-ht-5);
 }

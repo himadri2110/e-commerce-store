@@ -29,7 +29,7 @@ const Login = () => {
       setLoginInput({ email: "", password: "" });
       setIsAuth(true);
 
-      navigate(-1);
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -96,6 +96,18 @@ const Login = () => {
 
               <button className="btn btn-primary" type="submit">
                 Log In
+              </button>
+              <button
+                className="btn outline-primary"
+                type="submit"
+                onClick={() =>
+                  setLoginInput({
+                    email: "adarshbalika@gmail.com",
+                    password: "adarshbalika",
+                  })
+                }
+              >
+                Guest Mode
               </button>
             </form>
           </div>

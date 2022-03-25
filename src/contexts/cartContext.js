@@ -32,16 +32,10 @@ const CartProvider = ({ children }) => {
 
   const addToCartHandler = async (product) => {
     if (isAuth) {
-      const itemExists = cart.find((item) => item._id === product._id);
+      const { data, status } = await addToCart(product, token);
 
-      if (itemExists) {
-        updateQtyHandler(product, "increment");
-      } else {
-        const { data, status } = await addToCart(product, token);
-
-        if (status === 201) {
-          setCart(() => [...data.cart]);
-        }
+      if (status === 201) {
+        setCart(() => [...data.cart]);
       }
     } else {
       navigate("/login");

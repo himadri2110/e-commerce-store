@@ -18,14 +18,8 @@ const Navbar = () => {
       <div className="nav-search input input-primary">
         <input type="text" placeholder="Search" />
       </div>
-
       <div className="nav-action">
-        {!isAuth ? (
-          <Link to="/login" className="icon login" title="Login">
-            <i className="fa-solid fa-sign-in"></i>
-            <span>Login</span>
-          </Link>
-        ) : (
+        {isAuth ? (
           <Link
             to="/logout"
             className="icon logout"
@@ -38,6 +32,11 @@ const Navbar = () => {
           >
             <i className="fa-solid fa-sign-out"></i>
             <span>Logout</span>
+          </Link>
+        ) : (
+          <Link to="/login" className="icon login" title="Login">
+            <i className="fa-solid fa-sign-in"></i>
+            <span>Login</span>
           </Link>
         )}
 
