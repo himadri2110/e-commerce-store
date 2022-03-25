@@ -1,12 +1,17 @@
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
 import { useWishlist } from "../../contexts/wishlistContext";
+import { useCart } from "../../contexts/cartContext";
+import { useAuth } from "../../contexts/authContext";
 
 const ProductCard = ({ product }) => {
   const { _id, title, price, discount, discountedPrice, image } = product;
   const { wishlist, toggleWishlist } = useWishlist();
+  const { cart, addToCartHandler } = useCart();
+  const { navigate } = useAuth();
 
   const itemInWishlist = wishlist.find((item) => item._id === _id);
+  const itemInCart = cart.find((item) => item._id === _id);
 
   return (
     <div className="card-wrapper basic-card card-w-dismiss">
@@ -38,7 +43,14 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="card-action">
-        <button className="btn btn-primary">Add to Cart</button>
+        <button
+          className="btn btn-primary"
+          onClick={() =>
+            itemInCart ? navigate("/cart") : addToCartHandler(product)
+          }
+        >
+          {itemInCart ? "Go To Cart" : "Add To Cart"}
+        </button>
       </div>
     </div>
   );

@@ -2,10 +2,12 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useWishlist } from "../../contexts/wishlistContext";
+import { useCart } from "../../contexts/cartContext";
 
 const Navbar = () => {
   const { isAuth, setIsAuth } = useAuth();
   const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
   return (
     <nav className="nav-bar">
@@ -46,7 +48,7 @@ const Navbar = () => {
 
         <Link to="/cart" className="icon" title="Cart">
           <i className="fa-solid fa-shopping-cart"></i>
-          {isAuth ? <span className="badge">2</span> : null}
+          {isAuth ? <span className="badge">{cart.length}</span> : null}
         </Link>
       </div>
     </nav>

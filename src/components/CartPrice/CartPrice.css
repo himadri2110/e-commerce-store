@@ -1,0 +1,35 @@
+.cart-price .title {
+  font-size: var(--heading-3);
+  width: initial;
+  padding: initial;
+  border-bottom: initial;
+}
+
+.cart-price .price {
+  font-size: 0.9rem;
+}
+
+.cart-price .price,
+.cart-price .total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.cart-price .total-price {
+  font-weight: bold;
+}
+
+.cart-price button {
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.cart-price .discount-msg {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}

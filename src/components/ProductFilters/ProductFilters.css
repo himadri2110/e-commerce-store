@@ -53,7 +53,7 @@
 }
 
 .filter-wrapper,
-.title {
+.product-sidebar .title {
   padding: 0.5rem 2rem;
   border-bottom: 1px solid var(--bg-secondary);
 }
@@ -87,7 +87,7 @@
   width: 100%;
 }
 
-/* MEDIA QUERIES PENDING */
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 650px) {
   .product-sidebar {
