@@ -7,7 +7,7 @@ import { addToWishlist } from "../services/wishlistServices/addToWishlist";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
-  const { token, isAuth } = useAuth();
+  const { token, isAuth, navigate } = useAuth();
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
@@ -29,20 +29,24 @@ const WishlistProvider = ({ children }) => {
   }, [isAuth]);
 
   const toggleWishlist = async (product) => {
-    const itemExists = wishlist.find((item) => item._id === product._id);
+    if (isAuth) {
+      const itemExists = wishlist.find((item) => item._id === product._id);
 
-    if (itemExists) {
-      const { data, status } = await removeFromWishlist(product._id, token);
+      if (itemExists) {
+        const { data, status } = await removeFromWishlist(product._id, token);
 
-      if (status === 200) {
-        setWishlist(() => [...data.wishlist]);
+        if (status === 200) {
+          setWishlist(() => [...data.wishlist]);
+        }
+      } else {
+        const { data, status } = await addToWishlist(product, token);
+
+        if (status === 201) {
+          setWishlist(() => [...data.wishlist]);
+        }
       }
     } else {
-      const { data, status } = await addToWishlist(product, token);
-
-      if (status === 201) {
-        setWishlist(() => [...data.wishlist]);
-      }
+      navigate("/login");
     }
   };
 

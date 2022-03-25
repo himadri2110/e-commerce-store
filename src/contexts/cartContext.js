@@ -10,7 +10,7 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const { wishlist, setWishlist } = useWishlist();
-  const { token, isAuth } = useAuth();
+  const { token, isAuth, navigate } = useAuth();
 
   useEffect(() => {
     if (isAuth) {
@@ -31,16 +31,20 @@ const CartProvider = ({ children }) => {
   }, [isAuth]);
 
   const addToCartHandler = async (product) => {
-    const itemExists = cart.find((item) => item._id === product._id);
+    if (isAuth) {
+      const itemExists = cart.find((item) => item._id === product._id);
 
-    if (itemExists) {
-      updateQtyHandler(product, "increment");
-    } else {
-      const { data, status } = await addToCart(product, token);
+      if (itemExists) {
+        updateQtyHandler(product, "increment");
+      } else {
+        const { data, status } = await addToCart(product, token);
 
-      if (status === 201) {
-        setCart(() => [...data.cart]);
+        if (status === 201) {
+          setCart(() => [...data.cart]);
+        }
       }
+    } else {
+      navigate("/login");
     }
   };
 
