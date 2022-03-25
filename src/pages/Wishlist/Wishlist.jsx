@@ -23,7 +23,12 @@ const Wishlist = () => {
               ))}
             </section>
           ) : (
-            <p className="text-center">Your wishlist is empty!</p>
+            <div className="text-center">
+              <p>Oops! Your wishlist is empty :(</p>
+              <Link to="/products" className="text-primary">
+                Start shopping!
+              </Link>
+            </div>
           )}
         </section>
       </section>

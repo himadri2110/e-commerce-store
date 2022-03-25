@@ -4,6 +4,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { CartCard } from "../../components/CartCard/CartCard";
 import { CartPrice } from "../../components/CartPrice/CartPrice";
 import { useCart } from "../../contexts/cartContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useCart();
@@ -31,7 +32,12 @@ const Cart = () => {
               </div>
             </section>
           ) : (
-            <p className="text-center">Your cart is empty!</p>
+            <div className="text-center">
+              <p>Oops! Your cart is empty :(</p>
+              <Link to="/products" className="text-primary">
+                Start shopping!
+              </Link>
+            </div>
           )}
         </section>
       </section>
