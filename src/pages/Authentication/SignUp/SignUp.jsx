@@ -8,17 +8,26 @@ import { useAuth } from "../../../contexts/authContext";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  const [signupInput, setSignupInput] = useState({});
   const { setIsAuth, setToken, navigate } = useAuth();
-  const [hide, setHide] = useState({ pwd: true, confirmPwd: true });
-  const [pwdMatch, setPwdMatch] = useState(true);
+
+  const [signup, setSignup] = useState({
+    input: {},
+    error: "",
+    pwdMatch: true,
+    hide: { pwd: true, confirmPwd: true },
+  });
 
   const signupInputHandler = (e) => {
     const { name, value } = e.target;
-    setSignupInput({ ...signupInput, [name]: value });
 
     if (name === "confirmPwd") {
-      setPwdMatch(() => (value === signupInput.pwd ? true : false));
+      setSignup({
+        ...signup,
+        input: { ...signup.input, [name]: value },
+        pwdMatch: value === signup.input.pwd ? true : false,
+      });
+    } else {
+      setSignup({ ...signup, input: { ...signup.input, [name]: value } });
     }
   };
 
@@ -26,18 +35,18 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const { data } = await signupService(signupInput);
+      const { data } = await signupService(signup.input);
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
       setToken(data.encodedToken);
 
       setIsAuth(true);
-      setSignupInput({ signupInput: "" });
+      setSignup({ ...signup, input: "" });
 
       navigate("/");
     } catch (err) {
-      console.error(err);
+      setSignup({ ...signup, error: err.response.data.errors[0] });
     }
   };
 
@@ -47,6 +56,8 @@ const SignUp = () => {
 
       <section className="main-section login-container">
         <div className="card-wrapper basic-card card-text-only">
+          <div className="text-center text-danger">{signup.error}</div>
+
           <div>
             <div className="card-heading">Sign Up</div>
           </div>
@@ -61,7 +72,7 @@ const SignUp = () => {
                   type="email"
                   placeholder="Type here..."
                   name="email"
-                  value={signupInput.email || ""}
+                  value={signup.input.email || ""}
                   onChange={signupInputHandler}
                   required
                 />
@@ -75,7 +86,7 @@ const SignUp = () => {
                   type="text"
                   placeholder="Type here..."
                   name="name"
-                  value={signupInput.name || ""}
+                  value={signup.input.name || ""}
                   onChange={signupInputHandler}
                   required
                 />
@@ -87,17 +98,24 @@ const SignUp = () => {
                 </label>
                 <div className="toggle-pwd">
                   <input
-                    type={`${hide.pwd ? "password" : "text"}`}
+                    type={`${signup.hide.pwd ? "password" : "text"}`}
                     placeholder="Type here..."
                     name="pwd"
-                    value={signupInput.pwd || ""}
+                    value={signup.input.pwd || ""}
                     onChange={signupInputHandler}
                     required
                   />
                   <i
-                    className={`fa-solid ${hide.pwd ? "fa-eye" : "fa-eye-slash"}
+                    className={`fa-solid ${
+                      signup.hide.pwd ? "fa-eye" : "fa-eye-slash"
+                    }
                     `}
-                    onClick={() => setHide({ ...hide, pwd: !hide.pwd })}
+                    onClick={() =>
+                      setSignup({
+                        ...signup,
+                        hide: { ...signup.hide, pwd: !signup.hide.pwd },
+                      })
+                    }
                   ></i>
                 </div>
               </div>
@@ -108,29 +126,35 @@ const SignUp = () => {
                 </label>
                 <div className="toggle-pwd">
                   <input
-                    type={`${hide.confirmPwd ? "password" : "text"}`}
+                    type={`${signup.hide.confirmPwd ? "password" : "text"}`}
                     placeholder="Type here..."
                     name="confirmPwd"
-                    value={signupInput.confirmPwd || ""}
+                    value={signup.input.confirmPwd || ""}
                     onChange={signupInputHandler}
                     required
                   />
 
                   <i
                     className={`fa-solid ${
-                      hide.confirmPwd ? "fa-eye" : "fa-eye-slash"
+                      signup.hide.confirmPwd ? "fa-eye" : "fa-eye-slash"
                     }`}
                     onClick={() =>
-                      setHide({ ...hide, confirmPwd: !hide.confirmPwd })
+                      setSignup({
+                        ...signup,
+                        hide: {
+                          ...signup.hide,
+                          confirmPwd: !signup.hide.confirmPwd,
+                        },
+                      })
                     }
                   ></i>
                 </div>
-                {!pwdMatch ? (
+                {!signup.pwdMatch ? (
                   <div className="input-error-msg">Passwords do not match</div>
                 ) : null}
               </div>
 
-              {pwdMatch ? (
+              {signup.pwdMatch ? (
                 <button className="btn btn-primary" type="submit">
                   Create New Account
                 </button>

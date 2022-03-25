@@ -117,8 +117,9 @@ form .btn-disabled {
   text-decoration: underline;
 }
 
-form label span {
-  color: var(--danger-color);
+form label span,
+.text-danger {
+  color: var(--danger-hover);
 }
 
 /* MEDIA QUERIES */
