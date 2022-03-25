@@ -22,3 +22,11 @@ body {
 section.main-section {
   flex-grow: 1;
 }
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-primary:hover {
+  text-decoration: underline;
+}
