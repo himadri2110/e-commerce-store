@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     product;
   const { wishlist, toggleWishlist } = useWishlist();
   const { cart, addToCartHandler } = useCart();
-  const { navigate } = useAuth();
+  const { isAuth, navigate } = useAuth();
 
   const itemInWishlist = wishlist.find((item) => item._id === _id);
   const itemInCart = cart.find((item) => item._id === _id);
@@ -28,7 +28,9 @@ const ProductCard = ({ product }) => {
         <div className="card-dismiss">
           <button>
             <i
-              className={itemInWishlist ? "fa fa-heart" : "fa fa-heart-o"}
+              className={
+                isAuth && itemInWishlist ? "fa fa-heart" : "fa fa-heart-o"
+              }
               onClick={() => toggleWishlist(product)}
             ></i>
           </button>
@@ -53,10 +55,10 @@ const ProductCard = ({ product }) => {
         <button
           className="btn btn-primary"
           onClick={() =>
-            itemInCart ? navigate("/cart") : addToCartHandler(product)
+            isAuth && itemInCart ? navigate("/cart") : addToCartHandler(product)
           }
         >
-          {itemInCart ? "Go To Cart" : "Add To Cart"}
+          {isAuth && itemInCart ? "Go To Cart" : "Add To Cart"}
         </button>
       </div>
     </div>
