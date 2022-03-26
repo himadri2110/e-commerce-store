@@ -7,31 +7,34 @@ import { loginService } from "../../../services/loginService";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [loginInput, setLoginInput] = useState({});
-  const [hide, setHide] = useState({ pwd: true });
-
   const { setIsAuth, setToken, navigate } = useAuth();
+
+  const [login, setLogin] = useState({
+    input: {},
+    error: "",
+    hide: { pwd: true },
+  });
 
   const loginInputHandler = (e) => {
     const { name, value } = e.target;
-    setLoginInput({ ...loginInput, [name]: value });
+    setLogin({ ...login, input: { ...login.input, [name]: value } });
   };
 
   const loginHandler = async (e) => {
     e.preventDefault();
 
     try {
-      const { data } = await loginService(loginInput);
+      const { data } = await loginService(login.input);
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
       setToken(data.encodedToken);
 
-      setLoginInput({ email: "", password: "" });
+      setLogin({ ...login, input: { email: "", password: "" } });
       setIsAuth(true);
 
-      navigate(-1);
+      navigate("/");
     } catch (err) {
-      console.log(err);
+      setLogin({ ...login, error: err.response.data.errors[0] });
     }
   };
 
@@ -41,6 +44,7 @@ const Login = () => {
 
       <section className="main-section login-container">
         <div className="card-wrapper basic-card card-text-only">
+          <div className="text-center text-danger">{login.error}</div>
           <div>
             <div className="card-heading">Log In</div>
           </div>
@@ -55,7 +59,7 @@ const Login = () => {
                   type="email"
                   placeholder="Type here..."
                   name="email"
-                  value={loginInput.email || ""}
+                  value={login.input.email || ""}
                   onChange={loginInputHandler}
                   required
                 />
@@ -66,18 +70,23 @@ const Login = () => {
                 </label>
                 <div className="toggle-pwd">
                   <input
-                    type={`${hide.pwd ? "password" : "text"}`}
+                    type={`${login.hide.pwd ? "password" : "text"}`}
                     placeholder="Type here..."
                     name="password"
-                    value={loginInput.password || ""}
+                    value={login.input.password || ""}
                     onChange={loginInputHandler}
                     required
                   />
                   <i
                     className={`fa-solid ${
-                      hide.pwd ? "fa-eye" : "fa-eye-slash"
+                      login.hide.pwd ? "fa-eye" : "fa-eye-slash"
                     }`}
-                    onClick={() => setHide({ ...hide, pwd: !hide.pwd })}
+                    onClick={() =>
+                      setLogin({
+                        ...login,
+                        hide: { pwd: !login.hide.pwd },
+                      })
+                    }
                   ></i>
                 </div>
               </div>
@@ -96,6 +105,21 @@ const Login = () => {
 
               <button className="btn btn-primary" type="submit">
                 Log In
+              </button>
+              <button
+                className="btn outline-primary"
+                type="submit"
+                onClick={() =>
+                  setLogin({
+                    ...login,
+                    input: {
+                      email: "adarshbalika@gmail.com",
+                      password: "adarshbalika",
+                    },
+                  })
+                }
+              >
+                Guest Mode
               </button>
             </form>
           </div>

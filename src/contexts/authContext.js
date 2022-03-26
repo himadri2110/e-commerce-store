@@ -6,10 +6,11 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const initialToken = localStorage.getItem("token");
-  const [token, setToken] = useState(initialToken || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [isAuth, setIsAuth] = useState(
+    JSON.parse(localStorage.getItem("isAuth")) || false
+  );
 
   return (
     <AuthContext.Provider

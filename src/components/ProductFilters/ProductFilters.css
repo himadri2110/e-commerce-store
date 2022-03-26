@@ -95,8 +95,12 @@
     padding: 0;
   }
 
+  .product-wrapper {
+    padding: 1rem;
+  }
+
   .filter-wrapper,
-  .title {
+  .product-sidebar .title {
     padding: 0.5rem 1rem;
   }
 

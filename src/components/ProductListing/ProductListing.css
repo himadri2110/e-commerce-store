@@ -20,11 +20,11 @@
   padding: 0;
 }
 
-@media screen and (max-width: 650px) {
-  .product-wrapper {
-    padding: 1rem;
-  }
+.product-heading .fa-sliders {
+  transform: rotate(90deg);
+}
 
+@media screen and (max-width: 650px) {
   .product-main {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
