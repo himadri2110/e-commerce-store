@@ -1,14 +1,15 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import { useAuth } from "./authContext";
 import axios from "axios";
 import { addToCart, removeFromCart, updateQty } from "../services/cartServices";
 import { addToWishlist } from "../services/wishlistServices/addToWishlist";
 import { useWishlist } from "./wishlistContext";
+import { cartReducer } from "../reducers/cartReducer";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cartState, cartDispatch] = useReducer(cartReducer, []);
   const { wishlist, setWishlist } = useWishlist();
   const { token, isAuth, navigate } = useAuth();
 
@@ -21,7 +22,7 @@ const CartProvider = ({ children }) => {
           });
 
           if (status === 200) {
-            setCart(data.cart);
+            cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
           }
         })();
       } catch (err) {
@@ -35,7 +36,7 @@ const CartProvider = ({ children }) => {
       const { data, status } = await addToCart(product, token);
 
       if (status === 201) {
-        setCart(() => [...data.cart]);
+        cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
       }
     } else {
       navigate("/login");
@@ -46,7 +47,7 @@ const CartProvider = ({ children }) => {
     const { data, status } = await removeFromCart(product._id, token);
 
     if (status === 200) {
-      setCart(() => [...data.cart]);
+      cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
     }
   };
 
@@ -57,7 +58,7 @@ const CartProvider = ({ children }) => {
       const { data, status } = await updateQty(product._id, token, type);
 
       if (status === 200) {
-        setCart(() => [...data.cart]);
+        cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
       }
     }
   };
@@ -79,7 +80,7 @@ const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        cart,
+        cartState,
         addToCartHandler,
         removeFromCartHandler,
         updateQtyHandler,

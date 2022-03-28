@@ -7,7 +7,7 @@ import { useCart } from "../../contexts/cartContext";
 const Navbar = () => {
   const { isAuth, setIsAuth } = useAuth();
   const { wishlist } = useWishlist();
-  const { cart } = useCart();
+  const { cartState } = useCart();
 
   return (
     <nav className="nav-bar">
@@ -49,8 +49,8 @@ const Navbar = () => {
 
         <Link to="/cart" className="icon" title="Cart">
           <i className="fa-solid fa-shopping-cart"></i>
-          {isAuth && cart.length > 0 ? (
-            <span className="badge">{cart.length}</span>
+          {isAuth && cartState.length > 0 ? (
+            <span className="badge">{cartState.length}</span>
           ) : null}
         </Link>
       </div>
