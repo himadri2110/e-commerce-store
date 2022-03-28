@@ -11,8 +11,6 @@ const Home = () => {
   const { productState, productDispatch, filterTypes } = useProducts();
   const { CATEGORY, CLEAR_FILTERS } = filterTypes;
 
-  const [productOne, productTwo] = products;
-
   return (
     <div className="page-wrapper">
       <Navbar />
@@ -110,8 +108,9 @@ const Home = () => {
           <div className="heading-2">Featured:</div>
 
           <div className="grid grid-two-col featured-grid">
-            <HorizontalCard product={productOne} />
-            <HorizontalCard product={productTwo} />
+            {productState.products.slice(0, 2).map((product) => (
+              <HorizontalCard product={product} key={product._id} />
+            ))}
           </div>
         </div>
       </section>
