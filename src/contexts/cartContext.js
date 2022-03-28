@@ -10,7 +10,7 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, []);
-  const { wishlist, setWishlist } = useWishlist();
+  const { wishlistState, wishlistDispatch } = useWishlist();
   const { token, isAuth, navigate } = useAuth();
 
   useEffect(() => {
@@ -66,13 +66,16 @@ const CartProvider = ({ children }) => {
   const moveToWishlistHandler = async (product) => {
     removeFromCartHandler(product);
 
-    const itemExists = wishlist.find((item) => item._id === product._id);
+    const itemExists = wishlistState.find((item) => item._id === product._id);
 
     if (!itemExists) {
       const { data, status } = await addToWishlist(product, token);
 
       if (status === 201) {
-        setWishlist(() => [...data.wishlist]);
+        wishlistDispatch({
+          type: "SET_WISHLIST_DATA",
+          payload: data.wishlist,
+        });
       }
     }
   };
