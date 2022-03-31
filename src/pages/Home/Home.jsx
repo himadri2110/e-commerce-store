@@ -2,7 +2,6 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
-import { products } from "./../../backend/db/products";
 import { HorizontalCard } from "../../components/HorizontalCard/HorizontalCard";
 import { categories } from "../../backend/db/categories";
 import { useProducts } from "../../contexts/productContext";
@@ -10,8 +9,6 @@ import { useProducts } from "../../contexts/productContext";
 const Home = () => {
   const { productState, productDispatch, filterTypes } = useProducts();
   const { CATEGORY, CLEAR_FILTERS } = filterTypes;
-
-  const [productOne, productTwo] = products;
 
   return (
     <div className="page-wrapper">
@@ -110,8 +107,9 @@ const Home = () => {
           <div className="heading-2">Featured:</div>
 
           <div className="grid grid-two-col featured-grid">
-            <HorizontalCard product={productOne} />
-            <HorizontalCard product={productTwo} />
+            {productState.products.slice(0, 4).map((product) => (
+              <HorizontalCard product={product} key={product._id} />
+            ))}
           </div>
         </div>
       </section>

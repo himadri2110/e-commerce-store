@@ -1,7 +1,15 @@
 import "./HorizontalCard.css";
+import { useCart } from "../../contexts/cartContext";
+
+import { useAuth } from "../../contexts/authContext";
 
 const HorizontalCard = ({ product }) => {
-  const { title, price, discount, discountedPrice, image } = product;
+  const { _id, title, price, image } = product;
+
+  const { cart, addToCartHandler } = useCart();
+  const { isAuth, navigate } = useAuth();
+  console.log(cart);
+  const itemInCart = cart.find((item) => item._id === _id);
 
   return (
     <div className="card-wrapper basic-card card-horizontal featured-card">
@@ -16,7 +24,16 @@ const HorizontalCard = ({ product }) => {
           <div className="card-content">
             <div className="price">&#8377; {price}</div>
           </div>
-          <button className="btn btn-primary">Buy Now</button>
+          <button
+            className="btn btn-primary"
+            onClick={() =>
+              isAuth && itemInCart
+                ? navigate("/cart")
+                : addToCartHandler(product)
+            }
+          >
+            {isAuth && itemInCart ? "Go To Cart" : "Add To Cart"}
+          </button>
         </div>
       </div>
     </div>
