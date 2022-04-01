@@ -110,7 +110,6 @@ const Home = () => {
 
 
             {productState.products.slice(0, 4).map((product) => (
- dev
               <HorizontalCard product={product} key={product._id} />
             ))}
           </div>
