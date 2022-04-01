@@ -1,8 +1,10 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import axios from "axios";
 import { useAuth } from "./authContext";
-import { removeFromWishlist } from "../services/wishlistServices/removeFromWishlist";
-import { addToWishlist } from "../services/wishlistServices/addToWishlist";
+import {
+  getWishlistItems,
+  addToWishlist,
+  removeFromWishlist,
+} from "../services/wishlistServices";
 import { wishlistReducer } from "../reducers/wishlistReducer";
 
 const WishlistContext = createContext();
@@ -15,9 +17,7 @@ const WishlistProvider = ({ children }) => {
     if (isAuth) {
       try {
         (async () => {
-          const { data, status } = await axios.get("/api/user/wishlist", {
-            headers: { authorization: token },
-          });
+          const { data, status } = await getWishlistItems(token);
 
           if (status === 200) {
             wishlistDispatch({

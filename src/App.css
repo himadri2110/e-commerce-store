@@ -1,6 +1,10 @@
 @import url("https://capture-ui.netlify.app/css/components.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+:root {
+  --box-shadow: 2px 2px 2px 0 var(--bg-color);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -29,4 +33,21 @@ section.main-section {
 
 .text-primary:hover {
   text-decoration: underline;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--primary-color);
 }

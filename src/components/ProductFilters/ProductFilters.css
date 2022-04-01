@@ -1,15 +1,20 @@
+.product-sidebar {
+  position: sticky;
+  top: 4rem;
+  left: 0;
+  height: 85vh;
+  border-right: 1px solid var(--bg-secondary);
+  margin-bottom: 1rem;
+}
+
 .product-sidebar,
 .product-wrapper {
-  padding: 1rem 0;
+  padding-top: 0.25rem;
   overflow-y: auto;
 }
 
 .product-wrapper {
   padding: 1rem 2rem;
-}
-
-.product-sidebar {
-  border-right: 1px solid var(--bg-secondary);
 }
 
 .product-sidebar .title {

@@ -3,7 +3,7 @@ import { Navbar } from "../../../components/Navbar/Navbar";
 import { Footer } from "../../../components/Footer/Footer";
 import "../styles.css";
 import { useAuth } from "../../../contexts/authContext";
-import { loginService } from "../../../services/loginService";
+import { loginService } from "../../../services/authServices";
 import { Link } from "react-router-dom";
 
 const Login = () => {

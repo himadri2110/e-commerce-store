@@ -2,7 +2,7 @@ import { Navbar } from "../../../components/Navbar/Navbar";
 import { Footer } from "../../../components/Footer/Footer";
 import "../styles.css";
 import { useState } from "react";
-import { signupService } from "../../../services/signupService";
+import { signupService } from "../../../services/authServices";
 
 import { useAuth } from "../../../contexts/authContext";
 import { Link } from "react-router-dom";

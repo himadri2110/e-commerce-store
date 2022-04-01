@@ -1,7 +1,11 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { useAuth } from "./authContext";
-import axios from "axios";
-import { addToCart, removeFromCart, updateQty } from "../services/cartServices";
+import {
+  getCartItems,
+  addToCart,
+  removeFromCart,
+  updateQty,
+} from "../services/cartServices";
 import { addToWishlist } from "../services/wishlistServices/addToWishlist";
 import { useWishlist } from "./wishlistContext";
 import { cartReducer } from "../reducers/cartReducer";
@@ -17,9 +21,7 @@ const CartProvider = ({ children }) => {
     if (isAuth) {
       try {
         (async () => {
-          const { data, status } = await axios.get("/api/user/cart", {
-            headers: { authorization: token },
-          });
+          const { data, status } = await getCartItems(token);
 
           if (status === 200) {
             cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
