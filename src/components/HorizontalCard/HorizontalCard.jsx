@@ -6,10 +6,12 @@ import { useAuth } from "../../contexts/authContext";
 const HorizontalCard = ({ product }) => {
   const { _id, title, price, image } = product;
 
+
   const { cartState, addToCartHandler } = useCart();
   const { isAuth, navigate } = useAuth();
 
   const itemInCart = cartState.find((item) => item._id === _id);
+
 
   return (
     <div className="card-wrapper basic-card card-horizontal featured-card">

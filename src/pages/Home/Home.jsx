@@ -2,7 +2,6 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
-import { products } from "./../../backend/db/products";
 import { HorizontalCard } from "../../components/HorizontalCard/HorizontalCard";
 import { categories } from "../../backend/db/categories";
 import { useProducts } from "../../contexts/productContext";
@@ -108,7 +107,10 @@ const Home = () => {
           <div className="heading-2">Featured:</div>
 
           <div className="grid grid-two-col featured-grid">
-            {productState.products.slice(0, 2).map((product) => (
+
+
+            {productState.products.slice(0, 4).map((product) => (
+ dev
               <HorizontalCard product={product} key={product._id} />
             ))}
           </div>
