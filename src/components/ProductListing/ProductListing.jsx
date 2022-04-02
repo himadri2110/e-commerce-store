@@ -10,9 +10,10 @@ import {
   getBrandedProducts,
   getCategorizedProducts,
 } from "../../utils/productFilters";
+import { Loader } from "../Loader/Loader";
 
 const ProductListing = () => {
-  const { productState, toggleFilter, showFilter } = useProducts();
+  const { productState, toggleFilter, showFilter, loading } = useProducts();
 
   const {
     products,
@@ -42,7 +43,9 @@ const ProductListing = () => {
 
   return (
     <section className={`product-wrapper ${showFilter ? "hide-div" : null}`}>
-      {filteredProducts.length > 0 ? (
+      {loading ? (
+        <Loader />
+      ) : filteredProducts.length > 0 ? (
         <div>
           <div className="product-heading">
             <div className="heading-3">

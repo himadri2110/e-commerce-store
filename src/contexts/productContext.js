@@ -8,7 +8,6 @@ import {
 import { productReducer, initialProducts } from "../reducers/productReducer";
 import { filterTypes } from "../constants/filterTypes";
 import { getProducts } from "../services/productServices/getProducts";
-import axios from "axios";
 
 const ProductContext = createContext();
 
@@ -19,6 +18,7 @@ const ProductProvider = ({ children }) => {
   );
 
   const [showFilter, setShowFilter] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleFilter = () => {
     setShowFilter((showFilter) => !showFilter);
@@ -28,20 +28,27 @@ const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await getProducts();
+      try {
+        setLoading(true);
+        const { data } = await getProducts();
+        setLoading(false);
 
-      data.products = data.products.map((product) => ({
-        ...product,
-        discountedPrice: (
-          product.price -
-          (product.price * product.discount) / 100
-        ).toFixed(0),
-      }));
+        data.products = data.products.map((product) => ({
+          ...product,
+          discountedPrice: (
+            product.price -
+            (product.price * product.discount) / 100
+          ).toFixed(0),
+        }));
 
-      productDispatch({
-        type: DISPLAY_PRODUCTS,
-        payload: { data: data.products },
-      });
+        productDispatch({
+          type: DISPLAY_PRODUCTS,
+          payload: { data: data.products },
+        });
+      } catch (err) {
+        setLoading(false);
+        console.error(err);
+      }
     })();
   }, []);
 
@@ -53,6 +60,7 @@ const ProductProvider = ({ children }) => {
         filterTypes,
         toggleFilter,
         showFilter,
+        loading,
       }}
     >
       {children}
