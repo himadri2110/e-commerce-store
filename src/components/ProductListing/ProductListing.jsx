@@ -58,9 +58,9 @@ const ProductListing = () => {
           </div>
 
           <section className="product-main">
-            {filteredProducts.map((product) => {
-              return <ProductCard product={product} key={product._id} />;
-            })}
+            {filteredProducts.map((product) => (
+              <ProductCard product={product} key={product._id} />
+            ))}
           </section>
         </div>
       ) : (

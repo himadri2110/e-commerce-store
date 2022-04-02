@@ -7,6 +7,7 @@ import {
 } from "react";
 import { productReducer, initialProducts } from "../reducers/productReducer";
 import { filterTypes } from "../constants/filterTypes";
+import { getProducts } from "../services/productServices/getProducts";
 import axios from "axios";
 
 const ProductContext = createContext();
@@ -27,7 +28,7 @@ const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/api/products");
+      const { data } = await getProducts();
 
       data.products = data.products.map((product) => ({
         ...product,

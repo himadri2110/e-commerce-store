@@ -7,7 +7,7 @@ import { useCart } from "../../contexts/cartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart } = useCart();
+  const { cartState } = useCart();
 
   return (
     <div className="page-wrapper">
@@ -16,13 +16,13 @@ const Cart = () => {
       <section className="main-section cart-container">
         <section className="cart-wrapper">
           <div className="heading-3">
-            My Cart (<span className="quantity">{cart.length}</span>)
+            My Cart (<span className="quantity">{cartState.length}</span>)
           </div>
 
-          {cart.length > 0 ? (
+          {cartState.length > 0 ? (
             <section className="cart-main">
               <div className="cart-product">
-                {cart.map((cartItem) => (
+                {cartState.map((cartItem) => (
                   <CartCard product={cartItem} key={cartItem._id} />
                 ))}
               </div>

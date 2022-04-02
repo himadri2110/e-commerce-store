@@ -7,12 +7,12 @@ import { useAuth } from "../../contexts/authContext";
 const ProductCard = ({ product }) => {
   const { _id, title, price, discount, discountedPrice, image, inStock } =
     product;
-  const { wishlist, toggleWishlist } = useWishlist();
-  const { cart, addToCartHandler } = useCart();
+  const { wishlistState, toggleWishlist } = useWishlist();
+  const { cartState, addToCartHandler } = useCart();
   const { isAuth, navigate } = useAuth();
 
-  const itemInWishlist = wishlist.find((item) => item._id === _id);
-  const itemInCart = cart.find((item) => item._id === _id);
+  const itemInWishlist = wishlistState.find((item) => item._id === _id);
+  const itemInCart = cartState.find((item) => item._id === _id);
 
   return (
     <div

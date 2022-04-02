@@ -2,7 +2,7 @@ import { Navbar } from "../../../components/Navbar/Navbar";
 import { Footer } from "../../../components/Footer/Footer";
 import "../styles.css";
 import { useState } from "react";
-import { signupService } from "../../../services/signupService";
+import { signupService } from "../../../services/authServices";
 
 import { useAuth } from "../../../contexts/authContext";
 import { Link } from "react-router-dom";
@@ -24,7 +24,7 @@ const SignUp = () => {
       setSignup({
         ...signup,
         input: { ...signup.input, [name]: value },
-        pwdMatch: value === signup.input.pwd ? true : false,
+        pwdMatch: value === signup.input.password ? true : false,
       });
     } else {
       setSignup({ ...signup, input: { ...signup.input, [name]: value } });
@@ -66,6 +66,34 @@ const SignUp = () => {
             <form className="form-group" onSubmit={signupHandler}>
               <div className="input-group input input-primary">
                 <label className="input-label">
+                  FirstName<span>*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Type here..."
+                  name="firstname"
+                  value={signup.input.firstname || ""}
+                  onChange={signupInputHandler}
+                  required
+                />
+              </div>
+
+              <div className="input-group input input-primary">
+                <label className="input-label">
+                  LastName<span>*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Type here..."
+                  name="lastname"
+                  value={signup.input.lastname || ""}
+                  onChange={signupInputHandler}
+                  required
+                />
+              </div>
+
+              <div className="input-group input input-primary">
+                <label className="input-label">
                   Email<span>*</span>
                 </label>
                 <input
@@ -80,28 +108,14 @@ const SignUp = () => {
 
               <div className="input-group input input-primary">
                 <label className="input-label">
-                  FullName<span>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Type here..."
-                  name="name"
-                  value={signup.input.name || ""}
-                  onChange={signupInputHandler}
-                  required
-                />
-              </div>
-
-              <div className="input-group input input-primary">
-                <label className="input-label">
                   Password<span>*</span>
                 </label>
                 <div className="toggle-pwd">
                   <input
                     type={`${signup.hide.pwd ? "password" : "text"}`}
                     placeholder="Type here..."
-                    name="pwd"
-                    value={signup.input.pwd || ""}
+                    name="password"
+                    value={signup.input.password || ""}
                     onChange={signupInputHandler}
                     required
                   />

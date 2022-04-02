@@ -1,27 +1,30 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import { useAuth } from "./authContext";
-import axios from "axios";
-import { addToCart, removeFromCart, updateQty } from "../services/cartServices";
+import {
+  getCartItems,
+  addToCart,
+  removeFromCart,
+  updateQty,
+} from "../services/cartServices";
 import { addToWishlist } from "../services/wishlistServices/addToWishlist";
 import { useWishlist } from "./wishlistContext";
+import { cartReducer } from "../reducers/cartReducer";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const { wishlist, setWishlist } = useWishlist();
+  const [cartState, cartDispatch] = useReducer(cartReducer, []);
+  const { wishlistState, wishlistDispatch } = useWishlist();
   const { token, isAuth, navigate } = useAuth();
 
   useEffect(() => {
     if (isAuth) {
       try {
         (async () => {
-          const { data, status } = await axios.get("/api/user/cart", {
-            headers: { authorization: token },
-          });
+          const { data, status } = await getCartItems(token);
 
           if (status === 200) {
-            setCart(data.cart);
+            cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
           }
         })();
       } catch (err) {
@@ -35,7 +38,7 @@ const CartProvider = ({ children }) => {
       const { data, status } = await addToCart(product, token);
 
       if (status === 201) {
-        setCart(() => [...data.cart]);
+        cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
       }
     } else {
       navigate("/login");
@@ -46,7 +49,7 @@ const CartProvider = ({ children }) => {
     const { data, status } = await removeFromCart(product._id, token);
 
     if (status === 200) {
-      setCart(() => [...data.cart]);
+      cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
     }
   };
 
@@ -57,7 +60,7 @@ const CartProvider = ({ children }) => {
       const { data, status } = await updateQty(product._id, token, type);
 
       if (status === 200) {
-        setCart(() => [...data.cart]);
+        cartDispatch({ type: "SET_CART_DATA", payload: data.cart });
       }
     }
   };
@@ -65,13 +68,16 @@ const CartProvider = ({ children }) => {
   const moveToWishlistHandler = async (product) => {
     removeFromCartHandler(product);
 
-    const itemExists = wishlist.find((item) => item._id === product._id);
+    const itemExists = wishlistState.find((item) => item._id === product._id);
 
     if (!itemExists) {
       const { data, status } = await addToWishlist(product, token);
 
       if (status === 201) {
-        setWishlist(() => [...data.wishlist]);
+        wishlistDispatch({
+          type: "SET_WISHLIST_DATA",
+          payload: data.wishlist,
+        });
       }
     }
   };
@@ -79,7 +85,7 @@ const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        cart,
+        cartState,
         addToCartHandler,
         removeFromCartHandler,
         updateQtyHandler,

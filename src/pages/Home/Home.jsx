@@ -107,6 +107,8 @@ const Home = () => {
           <div className="heading-2">Featured:</div>
 
           <div className="grid grid-two-col featured-grid">
+
+
             {productState.products.slice(0, 4).map((product) => (
               <HorizontalCard product={product} key={product._id} />
             ))}

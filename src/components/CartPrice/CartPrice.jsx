@@ -7,16 +7,16 @@ import {
 } from "../../utils/cartPrice";
 
 const CartPrice = () => {
-  const { cart } = useCart();
+  const { cartState } = useCart();
 
   const cartPrice = {
     deliveryCharges: 49,
-    price: getPrice(cart),
-    discountInPrice: getDiscountInPrice(cart),
+    price: getPrice(cartState),
+    discountInPrice: getDiscountInPrice(cartState),
   };
 
   const totalPrice = getTotalPrice(
-    cart,
+    cartState,
     cartPrice.price,
     cartPrice.discountInPrice,
     cartPrice.deliveryCharges
@@ -31,7 +31,7 @@ const CartPrice = () => {
       <div className="sub-price">
         <div className="price">
           <div className="text">
-            Price (<span className="quantity">{cart.length}</span> items)
+            Price (<span className="quantity">{cartState.length}</span> items)
           </div>
           <div className="value">&#8377; {cartPrice.price}</div>
         </div>
