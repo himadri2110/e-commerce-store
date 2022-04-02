@@ -6,6 +6,7 @@ import { useAuth } from "../../../contexts/authContext";
 import { loginService } from "../../../services/authServices";
 import { Link } from "react-router-dom";
 import { Loader } from "../../../components/Loader/Loader";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { setIsAuth, setToken, navigate } = useAuth();
@@ -30,6 +31,9 @@ const Login = () => {
       setLoading(true);
       const { data } = await loginService(login.input);
       setLoading(false);
+      toast.success(`Welcome back, ${data.foundUser.firstName}!`, {
+        icon: "👋",
+      });
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);

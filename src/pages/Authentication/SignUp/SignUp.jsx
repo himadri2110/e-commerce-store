@@ -4,7 +4,7 @@ import "../styles.css";
 import { useState } from "react";
 import { signupService } from "../../../services/authServices";
 import { Loader } from "../../../components/Loader/Loader";
-
+import { toast } from "react-hot-toast";
 import { useAuth } from "../../../contexts/authContext";
 import { Link } from "react-router-dom";
 
@@ -41,6 +41,9 @@ const SignUp = () => {
       setLoading(true);
       const { data } = await signupService(signup.input);
       setLoading(false);
+      toast.success(`Hi, ${data.createdUser.firstname}!`, {
+        icon: "👋",
+      });
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
@@ -52,6 +55,7 @@ const SignUp = () => {
       navigate("/");
     } catch (err) {
       setLoading(false);
+      toast.error("There was an error signing you up");
       setSignup({ ...signup, error: err.response.data.errors[0] });
     }
   };

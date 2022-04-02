@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const { isAuth, setIsAuth } = useAuth();
@@ -28,6 +29,7 @@ const Navbar = () => {
               localStorage.removeItem("token");
               localStorage.setItem("isAuth", false);
               setIsAuth(false);
+              toast.success("Logged out!");
             }}
           >
             <i className="fa-solid fa-sign-out"></i>

@@ -6,6 +6,7 @@ import {
   removeFromWishlist,
 } from "../services/wishlistServices";
 import { wishlistReducer } from "../reducers/wishlistReducer";
+import { toast } from "react-hot-toast";
 
 const WishlistContext = createContext();
 
@@ -40,6 +41,7 @@ const WishlistProvider = ({ children }) => {
         const { data, status } = await removeFromWishlist(product._id, token);
 
         if (status === 200) {
+          toast.success("Product removed from Wishlist!");
           wishlistDispatch({
             type: "SET_WISHLIST_DATA",
             payload: data.wishlist,
@@ -49,6 +51,7 @@ const WishlistProvider = ({ children }) => {
         const { data, status } = await addToWishlist(product, token);
 
         if (status === 201) {
+          toast.success("Product added to Wishlist!");
           wishlistDispatch({
             type: "SET_WISHLIST_DATA",
             payload: data.wishlist,
