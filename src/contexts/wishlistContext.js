@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+} from "react";
 import { useAuth } from "./authContext";
 import {
   getWishlistItems,
@@ -13,6 +19,7 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const { token, isAuth, navigate } = useAuth();
   const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, []);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isAuth) {
@@ -38,7 +45,9 @@ const WishlistProvider = ({ children }) => {
       const itemExists = wishlistState.find((item) => item._id === product._id);
 
       if (itemExists) {
+        setLoading(true);
         const { data, status } = await removeFromWishlist(product._id, token);
+        setLoading(false);
 
         if (status === 200) {
           toast.success("Product removed from Wishlist!");
@@ -48,7 +57,9 @@ const WishlistProvider = ({ children }) => {
           });
         }
       } else {
+        setLoading(true);
         const { data, status } = await addToWishlist(product, token);
+        setLoading(false);
 
         if (status === 201) {
           toast.success("Product added to Wishlist!");
@@ -65,7 +76,7 @@ const WishlistProvider = ({ children }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlistState, wishlistDispatch, toggleWishlist }}
+      value={{ wishlistState, wishlistDispatch, toggleWishlist, loading }}
     >
       {children}
     </WishlistContext.Provider>
