@@ -4,8 +4,12 @@ import { useCart } from "../../contexts/cartContext";
 const CartCard = ({ product }) => {
   const { title, qty, price, image } = product;
 
-  const { removeFromCartHandler, updateQtyHandler, moveToWishlistHandler } =
-    useCart();
+  const {
+    removeFromCartHandler,
+    updateQtyHandler,
+    moveToWishlistHandler,
+    loading,
+  } = useCart();
 
   return (
     <div className="card-wrapper basic-card card-horizontal">
@@ -22,6 +26,7 @@ const CartCard = ({ product }) => {
               <button
                 className="minus"
                 onClick={() => updateQtyHandler(product, "decrement")}
+                disabled={loading}
               >
                 -
               </button>
@@ -29,6 +34,7 @@ const CartCard = ({ product }) => {
               <button
                 className="plus"
                 onClick={() => updateQtyHandler(product, "increment")}
+                disabled={loading}
               >
                 +
               </button>
@@ -37,12 +43,14 @@ const CartCard = ({ product }) => {
           <button
             className="btn btn-primary"
             onClick={() => moveToWishlistHandler(product)}
+            disabled={loading}
           >
             Move to Wishlist
           </button>
           <button
             className="btn outline-primary"
             onClick={() => removeFromCartHandler(product)}
+            disabled={loading}
           >
             Remove from Cart
           </button>

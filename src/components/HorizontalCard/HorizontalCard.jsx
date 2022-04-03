@@ -5,13 +5,10 @@ import { useAuth } from "../../contexts/authContext";
 
 const HorizontalCard = ({ product }) => {
   const { _id, title, price, image } = product;
-
-
-  const { cartState, addToCartHandler } = useCart();
+  const { cartState, addToCartHandler, loading } = useCart();
   const { isAuth, navigate } = useAuth();
 
   const itemInCart = cartState.find((item) => item._id === _id);
-
 
   return (
     <div className="card-wrapper basic-card card-horizontal featured-card">
@@ -33,6 +30,7 @@ const HorizontalCard = ({ product }) => {
                 ? navigate("/cart")
                 : addToCartHandler(product)
             }
+            disabled={loading}
           >
             {isAuth && itemInCart ? "Go To Cart" : "Add To Cart"}
           </button>

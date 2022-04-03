@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+} from "react";
 import { useAuth } from "./authContext";
 import {
   getWishlistItems,
@@ -6,12 +12,14 @@ import {
   removeFromWishlist,
 } from "../services/wishlistServices";
 import { wishlistReducer } from "../reducers/wishlistReducer";
+import { toast } from "react-hot-toast";
 
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const { token, isAuth, navigate } = useAuth();
   const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, []);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isAuth) {
@@ -37,18 +45,24 @@ const WishlistProvider = ({ children }) => {
       const itemExists = wishlistState.find((item) => item._id === product._id);
 
       if (itemExists) {
+        setLoading(true);
         const { data, status } = await removeFromWishlist(product._id, token);
+        setLoading(false);
 
         if (status === 200) {
+          toast.success("Product removed from Wishlist!");
           wishlistDispatch({
             type: "SET_WISHLIST_DATA",
             payload: data.wishlist,
           });
         }
       } else {
+        setLoading(true);
         const { data, status } = await addToWishlist(product, token);
+        setLoading(false);
 
         if (status === 201) {
+          toast.success("Product added to Wishlist!");
           wishlistDispatch({
             type: "SET_WISHLIST_DATA",
             payload: data.wishlist,
@@ -62,7 +76,7 @@ const WishlistProvider = ({ children }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlistState, wishlistDispatch, toggleWishlist }}
+      value={{ wishlistState, wishlistDispatch, toggleWishlist, loading }}
     >
       {children}
     </WishlistContext.Provider>

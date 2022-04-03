@@ -7,8 +7,12 @@ import { useAuth } from "../../contexts/authContext";
 const ProductCard = ({ product }) => {
   const { _id, title, price, discount, discountedPrice, image, inStock } =
     product;
-  const { wishlistState, toggleWishlist } = useWishlist();
-  const { cartState, addToCartHandler } = useCart();
+  const {
+    wishlistState,
+    toggleWishlist,
+    loading: wishlistLoading,
+  } = useWishlist();
+  const { cartState, addToCartHandler, loading: cartLoading } = useCart();
   const { isAuth, navigate } = useAuth();
 
   const itemInWishlist = wishlistState.find((item) => item._id === _id);
@@ -26,12 +30,14 @@ const ProductCard = ({ product }) => {
         </Link>
 
         <div className="card-dismiss">
-          <button>
+          <button
+            onClick={() => toggleWishlist(product)}
+            disabled={wishlistLoading}
+          >
             <i
               className={
                 isAuth && itemInWishlist ? "fa fa-heart" : "fa fa-heart-o"
               }
-              onClick={() => toggleWishlist(product)}
             ></i>
           </button>
         </div>
@@ -57,6 +63,7 @@ const ProductCard = ({ product }) => {
           onClick={() =>
             isAuth && itemInCart ? navigate("/cart") : addToCartHandler(product)
           }
+          disabled={cartLoading}
         >
           {isAuth && itemInCart ? "Go To Cart" : "Add To Cart"}
         </button>
