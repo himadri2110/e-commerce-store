@@ -8,6 +8,7 @@ import { Login } from "../pages/Authentication/Login/Login";
 import { SignUp } from "../pages/Authentication/SignUp/SignUp";
 import { Logout } from "../pages/Authentication/Logout/Logout";
 import { PrivateRoute } from "./PrivateRoute";
+import { SingleProduct } from "../pages/SingleProduct/SingleProduct";
 
 const NavRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const NavRoutes = () => {
       <Route path="/mockman" element={<Mockman />} />
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/products/:productId" element={<SingleProduct />} />
       <Route
         path="/cart"
         element={

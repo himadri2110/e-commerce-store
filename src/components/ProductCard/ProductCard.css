@@ -66,12 +66,15 @@
 }
 
 .card-wrapper.card-w-overlay {
-  pointer-events: none;
   background-color: var(--bg-grey);
 }
 
+.card-wrapper.card-w-overlay .cart-button {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .card-wrapper.card-w-overlay .card-dismiss {
-  pointer-events: all;
   background-color: initial;
 }
 
