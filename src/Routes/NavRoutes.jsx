@@ -10,6 +10,7 @@ import { Logout } from "../pages/Authentication/Logout/Logout";
 import { PrivateRoute } from "./PrivateRoute";
 import { SingleProduct } from "../pages/SingleProduct/SingleProduct";
 import { ResetScroll } from "../components/ResetScroll/ResetScroll";
+import { PageNotFound } from "../pages/PageNotFound/PageNotFound";
 
 const NavRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const NavRoutes = () => {
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<SingleProduct />} />
         <Route
