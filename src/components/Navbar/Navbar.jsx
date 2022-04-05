@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/authContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
 import { toast } from "react-hot-toast";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const { isAuth, setIsAuth } = useAuth();
@@ -21,7 +22,7 @@ const Navbar = () => {
       </Link>
 
       <div className="nav-search input input-primary">
-        <input type="text" placeholder="Search" />
+        <SearchBar />
       </div>
 
       <div className="nav-action">

@@ -19,6 +19,7 @@ const ProductProvider = ({ children }) => {
 
   const [showFilter, setShowFilter] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
 
   const toggleFilter = () => {
     setShowFilter((showFilter) => !showFilter);
@@ -61,6 +62,8 @@ const ProductProvider = ({ children }) => {
         toggleFilter,
         showFilter,
         loading,
+        searchVal,
+        setSearchVal,
       }}
     >
       {children}
