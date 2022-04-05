@@ -15,7 +15,8 @@
 }
 
 .nav-bar .nav-search > *,
-.nav-bar .btn {
+.nav-bar .btn,
+.nav-primary {
   font-size: 1rem;
 }
 

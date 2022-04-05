@@ -16,9 +16,14 @@ const Navbar = () => {
         Essence
       </Link>
 
+      <Link to="/products" className="nav-primary">
+        <span>Shop</span>
+      </Link>
+
       <div className="nav-search input input-primary">
         <input type="text" placeholder="Search" />
       </div>
+
       <div className="nav-action">
         {isAuth ? (
           <Link
