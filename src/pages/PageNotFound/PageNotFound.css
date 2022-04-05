@@ -1,0 +1,19 @@
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-not-found .not-found-image {
+  width: 100%;
+  max-width: 28rem;
+  padding: 1rem;
+}
+
+.page-not-found .page-action {
+  margin: 2rem;
+}
+
+.page-not-found .page-action i {
+  padding-right: 0.5rem;
+}

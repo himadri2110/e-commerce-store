@@ -11,9 +11,11 @@ import {
   getCategorizedProducts,
 } from "../../utils/productFilters";
 import { Loader } from "../Loader/Loader";
+import { useSearchedProducts } from "../../customHooks/useSearchedProducts";
 
 const ProductListing = () => {
-  const { productState, toggleFilter, showFilter, loading } = useProducts();
+  const { productState, toggleFilter, showFilter, loading, searchVal } =
+    useProducts();
 
   const {
     products,
@@ -26,7 +28,9 @@ const ProductListing = () => {
     priceRange,
   } = productState;
 
-  const brandedProducts = getBrandedProducts(brand, products);
+  const searchedProducts = useSearchedProducts(products, searchVal);
+
+  const brandedProducts = getBrandedProducts(brand, searchedProducts);
   const categorizedProducts = getCategorizedProducts(category, brandedProducts);
   const sortedProducts = getSortedProducts(sortBy, categorizedProducts);
   const ratedProducts = getRatedProducts(rating, sortedProducts);
