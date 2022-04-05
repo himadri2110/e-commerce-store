@@ -1,0 +1,116 @@
+.single-product {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.single-product .card-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  justify-content: center;
+  max-width: 40rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--primary-color);
+  box-shadow: var(--box-shadow);
+  cursor: auto;
+}
+
+.single-product .img-div img {
+  height: auto;
+  border-radius: var(--border-radius);
+  object-fit: contain;
+}
+
+.single-product .card-dismiss button i {
+  z-index: 1;
+}
+
+.single-product .card-body {
+  margin-top: 0.5rem;
+}
+
+.single-product .card-heading {
+  font-size: var(--heading-3);
+  padding-top: 0;
+}
+
+.single-product .card-content {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0.75rem 0.75rem 0;
+}
+
+.card-tags {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.card-tags i {
+  color: var(--primary-color);
+}
+
+.single-product .rating i {
+  margin-left: 0.25rem;
+}
+
+.single-product .rating,
+.single-product .card-tags,
+.single-product .card-description {
+  margin: 0.75rem 0.75rem 0;
+}
+
+.single-product .rating {
+  font-size: 0.8rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 0.1rem 0.4rem;
+  width: max-content;
+}
+
+.single-product hr {
+  margin: 1rem;
+}
+
+.single-product ul.spaced-list {
+  padding: 0;
+  font-size: 1rem;
+}
+
+.single-product ul.spaced-list li {
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.single-product ul.spaced-list .list-value {
+  font-weight: normal;
+}
+
+.single-product .card-action button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 600px) {
+  .single-product .card-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .single-product .img-div {
+    margin: 0 auto;
+  }
+
+  .single-product .img-div img {
+    margin: 0;
+  }
+
+  .single-product .card-body > * {
+    margin: 0.5rem 0;
+  }
+}

@@ -5,7 +5,7 @@ import { useCart } from "../../contexts/cartContext";
 import { useAuth } from "../../contexts/authContext";
 
 const ProductCard = ({ product }) => {
-  const { _id, title, price, discount, discountedPrice, image, inStock } =
+  const { _id, title, price, discount, discountedPrice, image, inStock, id } =
     product;
   const {
     wishlistState,
@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
       }`}
     >
       <div className={`${!inStock ? "overlay-bg" : null}`}>
-        <Link to="/">
+        <Link to={`/products/${id}`}>
           <img src={image} className="card-img" alt={title} />
         </Link>
 
@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
 
       <div className={`card-action ${!inStock ? "overlay-bg" : null}`}>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary cart-button"
           onClick={() =>
             isAuth && itemInCart ? navigate("/cart") : addToCartHandler(product)
           }
