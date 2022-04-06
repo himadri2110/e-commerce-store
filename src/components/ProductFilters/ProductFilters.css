@@ -1,5 +1,6 @@
 .product-sidebar {
   position: sticky;
+  top: 3.5rem;
   left: 0;
   height: 85vh;
   border-right: 1px solid var(--bg-secondary);
@@ -123,6 +124,7 @@
     height: 75vh;
     bottom: 0;
     left: 0;
+    top: 7rem;
     border-top: 1px solid var(--bg-secondary);
   }
 
