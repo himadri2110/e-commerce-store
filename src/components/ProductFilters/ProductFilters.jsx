@@ -155,6 +155,34 @@ const ProductFilters = () => {
               />{" "}
               Ajmal
             </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={productState.brand.includes("WILD STONE")}
+                value="WILD STONE"
+                onChange={(e) =>
+                  productDispatch({
+                    type: BRAND,
+                    payload: { value: e.target.value },
+                  })
+                }
+              />{" "}
+              Wild Stone
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={productState.brand.includes("SKINN")}
+                value="SKINN"
+                onChange={(e) =>
+                  productDispatch({
+                    type: BRAND,
+                    payload: { value: e.target.value },
+                  })
+                }
+              />{" "}
+              Skinn
+            </label>
           </div>
         </div>
 

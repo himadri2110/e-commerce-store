@@ -1,10 +1,10 @@
 import "./HorizontalCard.css";
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
-
 import { useAuth } from "../../contexts/authContext";
 
 const HorizontalCard = ({ product }) => {
-  const { _id, title, price, image } = product;
+  const { _id, title, price, image, id } = product;
   const { cartState, addToCartHandler, loading } = useCart();
   const { isAuth, navigate } = useAuth();
 
@@ -16,13 +16,16 @@ const HorizontalCard = ({ product }) => {
         <img src={image} className="card-img" alt="Perfume" />
 
         <div className="card-main">
-          <div className="card-bdg primary">Trending</div>
+          <Link to={`/products/${id}`}>
+            <div className="card-bdg primary">Trending</div>
 
-          <p className="heading">{title}</p>
+            <p className="heading">{title}</p>
 
-          <div className="card-content">
-            <div className="price">&#8377; {price}</div>
-          </div>
+            <div className="card-content">
+              <div className="price">&#8377; {price}</div>
+            </div>
+          </Link>
+
           <button
             className="btn btn-primary"
             onClick={() =>

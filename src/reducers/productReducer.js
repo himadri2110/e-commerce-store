@@ -8,7 +8,7 @@ const initialProducts = {
   rating: null,
   inStock: false,
   fastDelivery: false,
-  priceRange: 1200,
+  priceRange: 1500,
   categories: {
     men: false,
     women: false,
