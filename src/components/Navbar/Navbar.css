@@ -15,8 +15,7 @@
 }
 
 .nav-bar .nav-search > *,
-.nav-bar .btn,
-.nav-primary {
+.nav-bar .btn {
   font-size: 0.9rem;
 }
 
@@ -41,6 +40,7 @@
   background-color: var(--text-color);
 }
 
+.nav-bar .nav-primary,
 .nav-action .login span,
 .nav-action .logout span {
   padding-left: 0.5rem;
@@ -72,6 +72,7 @@
 
   .nav-bar > * {
     margin: 0.25rem 0;
+    font-size: 80%;
   }
 
   .nav-action .login span,
@@ -81,6 +82,15 @@
 }
 
 @media screen and (max-width: 600px) {
+  .nav-bar .nav-brand {
+    font-size: 1.5rem;
+  }
+
+  .nav-bar .nav-primary,
+  .nav-bar .nav-action > * {
+    font-size: 1.1rem;
+  }
+
   .nav-bar .nav-search {
     order: 2;
     flex-grow: 1;

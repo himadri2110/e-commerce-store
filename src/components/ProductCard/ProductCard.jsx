@@ -42,9 +42,9 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
 
-        <div className="card-heading" title={title}>
+        <Link to={`/products/${id}`} className="card-heading" title={title}>
           {title}
-        </div>
+        </Link>
       </div>
 
       {!inStock ? <div className="overlay-text">Out of Stock</div> : null}

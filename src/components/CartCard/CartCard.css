@@ -3,7 +3,6 @@
   border: 1px solid var(--primary-color);
   background-color: var(--white);
   box-shadow: var(--box-shadow);
-  cursor: pointer;
   margin: 1rem;
   max-height: max-content;
 }

@@ -1,8 +1,9 @@
 import "./CartCard.css";
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
 
 const CartCard = ({ product }) => {
-  const { title, qty, price, image } = product;
+  const { title, qty, price, image, id } = product;
 
   const {
     removeFromCartHandler,
@@ -17,7 +18,8 @@ const CartCard = ({ product }) => {
         <img src={image} className="card-img" alt={title} />
 
         <div className="card-heading">
-          {title}
+          <Link to={`/products/${id}`}>{title}</Link>
+
           <div className="card-content">
             <div className="price">&#8377; {price}</div>
 

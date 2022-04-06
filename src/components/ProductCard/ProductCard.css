@@ -2,7 +2,6 @@
   border: 1px solid var(--primary-color);
   background-color: inherit;
   box-shadow: var(--box-shadow);
-  cursor: pointer;
 }
 
 .card-img {
