@@ -31,6 +31,7 @@ const Login = () => {
       setLoading(true);
       const { data } = await loginService(login.input);
       setLoading(false);
+
       toast.success(`Welcome back, ${data.foundUser.firstName}!`, {
         icon: "👋",
       });
