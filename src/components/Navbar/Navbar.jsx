@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
-import { toast } from "react-hot-toast";
 import { SearchBar } from "../SearchBar/SearchBar";
 
 const Navbar = () => {
-  const { isAuth, setIsAuth } = useAuth();
+  const { isAuth, logoutHandler } = useAuth();
   const { wishlistState } = useWishlist();
   const { cartState } = useCart();
 
@@ -27,19 +26,9 @@ const Navbar = () => {
 
       <div className="nav-action">
         {isAuth ? (
-          <Link
-            to="/logout"
-            className="icon logout"
-            title="Logout"
-            onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.setItem("isAuth", false);
-              setIsAuth(false);
-              toast.success("Logged out!");
-            }}
-          >
-            <i className="fa-solid fa-sign-out"></i>
-            <span>Logout</span>
+          <Link to="/profile" className="icon profile" title="Profile">
+            <i className="fa-solid fa-user"></i>
+            <span>Profile</span>
           </Link>
         ) : (
           <Link to="/login" className="icon login" title="Login">

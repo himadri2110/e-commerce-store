@@ -1,0 +1,41 @@
+.account-container {
+  margin: 0 1rem;
+}
+
+.account-wrapper {
+  max-width: 20rem;
+  height: max-content;
+  margin: 1rem auto;
+  border: 1px solid var(--bg-secondary);
+}
+
+.account-wrapper .account-tabs {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.account-wrapper .account-tabs > * {
+  flex: 1 1;
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+.account-wrapper .account-tabs .active-tab {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.account-wrapper .account-data {
+  padding: 1rem;
+}
+
+.account-wrapper .account-data > * {
+  padding: 0.25rem 0;
+}
+
+.account-data .profile-container button {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+}

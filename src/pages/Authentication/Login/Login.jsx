@@ -37,6 +37,8 @@ const Login = () => {
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(data.foundUser));
+
       setToken(data.encodedToken);
 
       setLogin({ ...login, input: { email: "", password: "" } });

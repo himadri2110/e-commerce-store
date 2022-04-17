@@ -42,13 +42,13 @@
 
 .nav-bar .nav-primary,
 .nav-action .login span,
-.nav-action .logout span {
+.nav-action .profile span {
   padding-left: 0.5rem;
   font-size: 1rem;
 }
 
 .nav-action .login,
-.nav-action .logout {
+.nav-action .profile {
   display: inline-flex;
   align-items: center;
 }
@@ -76,7 +76,7 @@
   }
 
   .nav-action .login span,
-  .nav-action .logout span {
+  .nav-action .profile span {
     display: none;
   }
 }
