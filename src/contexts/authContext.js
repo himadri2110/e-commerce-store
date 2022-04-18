@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("isAuth", false);
     setIsAuth(false);
     toast.success("Logged out!");
+    navigate("/logout");
   };
 
   return (

@@ -40,9 +40,7 @@
   background-color: var(--text-color);
 }
 
-.nav-bar .nav-primary,
-.nav-action .login span,
-.nav-action .profile span {
+.nav-bar .nav-primary {
   padding-left: 0.5rem;
   font-size: 1rem;
 }
@@ -73,11 +71,6 @@
   .nav-bar > * {
     margin: 0.25rem 0;
     font-size: 80%;
-  }
-
-  .nav-action .login span,
-  .nav-action .profile span {
-    display: none;
   }
 }
 

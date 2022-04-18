@@ -25,18 +25,6 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        {isAuth ? (
-          <Link to="/profile" className="icon profile" title="Profile">
-            <i className="fa-solid fa-user"></i>
-            <span>Profile</span>
-          </Link>
-        ) : (
-          <Link to="/login" className="icon login" title="Login">
-            <i className="fa-solid fa-sign-in"></i>
-            <span>Login</span>
-          </Link>
-        )}
-
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
           {isAuth && wishlistState.length > 0 ? (
@@ -50,6 +38,16 @@ const Navbar = () => {
             <span className="badge">{cartState.length}</span>
           ) : null}
         </Link>
+
+        {isAuth ? (
+          <Link to="/profile" className="icon profile" title="Profile">
+            <i className="fa-solid fa-user"></i>
+          </Link>
+        ) : (
+          <Link to="/login" className="icon login" title="Login">
+            <i className="fa-solid fa-sign-in"></i>
+          </Link>
+        )}
       </div>
     </nav>
   );

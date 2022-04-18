@@ -42,7 +42,6 @@ const Login = () => {
 
       setToken(data.encodedToken);
 
-      setLogin({ ...login, input: { email: "", password: "" } });
       setIsAuth(true);
 
       navigate("/");
