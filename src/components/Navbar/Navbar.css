@@ -40,15 +40,13 @@
   background-color: var(--text-color);
 }
 
-.nav-bar .nav-primary,
-.nav-action .login span,
-.nav-action .logout span {
+.nav-bar .nav-primary {
   padding-left: 0.5rem;
   font-size: 1rem;
 }
 
 .nav-action .login,
-.nav-action .logout {
+.nav-action .profile {
   display: inline-flex;
   align-items: center;
 }
@@ -73,11 +71,6 @@
   .nav-bar > * {
     margin: 0.25rem 0;
     font-size: 80%;
-  }
-
-  .nav-action .login span,
-  .nav-action .logout span {
-    display: none;
   }
 }
 
