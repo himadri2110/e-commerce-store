@@ -86,6 +86,7 @@
 .category-grid,
 .featured-grid {
   gap: 1rem;
+  background-color: inherit;
 }
 
 .featured-grid > * {
