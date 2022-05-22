@@ -41,16 +41,18 @@ const SignUp = () => {
       setLoading(true);
       const { data } = await signupService(signup.input);
       setLoading(false);
-      toast.success(`Hi, ${data.createdUser.firstname}!`, {
+
+      toast.success(`Hi, ${data.createdUser.firstName}!`, {
         icon: "👋",
       });
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(data.createdUser));
+
       setToken(data.encodedToken);
 
       setIsAuth(true);
-      setSignup({ ...signup, input: "" });
 
       navigate("/");
     } catch (err) {
@@ -84,8 +86,8 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Type here..."
-                    name="firstname"
-                    value={signup.input.firstname || ""}
+                    name="firstName"
+                    value={signup.input.firstName || ""}
                     onChange={signupInputHandler}
                     required
                   />
@@ -98,8 +100,8 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Type here..."
-                    name="lastname"
-                    value={signup.input.lastname || ""}
+                    name="lastName"
+                    value={signup.input.lastName || ""}
                     onChange={signupInputHandler}
                     required
                   />

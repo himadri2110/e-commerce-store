@@ -27,7 +27,7 @@ const Home = () => {
                 Choose from our wide variety of fragrances
               </p>
               <Link to="/products" className="hero-action">
-                <button className="btn btn-primary">Smell Now</button>
+                <button className="btn btn-primary">Shop Now</button>
               </Link>
             </div>
           </div>

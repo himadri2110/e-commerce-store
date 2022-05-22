@@ -1,0 +1,64 @@
+.account-container {
+  margin: 0 1rem;
+}
+
+.account-wrapper {
+  max-width: 20rem;
+  height: max-content;
+  margin: 1rem auto;
+  border: 1px solid var(--bg-secondary);
+}
+
+.account-wrapper .account-tabs {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.account-wrapper .account-tabs > * {
+  flex: 1 1;
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+.account-wrapper .account-tabs .active-tab {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.account-wrapper .account-data {
+  padding: 1rem;
+}
+
+.account-wrapper .account-data > * {
+  padding: 0.25rem 0;
+}
+
+/* User Profile */
+
+.account-data .profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-data .profile-container button {
+  border: 1px solid var(--bg-secondary);
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.account-data .profile-container .profile-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account-data .profile-container .profile-details .user-name {
+  font-weight: bold;
+}
+
+.account-data .profile-container .profile-details .user-email {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}

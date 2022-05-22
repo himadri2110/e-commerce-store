@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
-import { toast } from "react-hot-toast";
 import { SearchBar } from "../SearchBar/SearchBar";
 
 const Navbar = () => {
-  const { isAuth, setIsAuth } = useAuth();
+  const { isAuth, logoutHandler } = useAuth();
   const { wishlistState } = useWishlist();
   const { cartState } = useCart();
 
@@ -26,28 +25,6 @@ const Navbar = () => {
       </div>
 
       <div className="nav-action">
-        {isAuth ? (
-          <Link
-            to="/logout"
-            className="icon logout"
-            title="Logout"
-            onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.setItem("isAuth", false);
-              setIsAuth(false);
-              toast.success("Logged out!");
-            }}
-          >
-            <i className="fa-solid fa-sign-out"></i>
-            <span>Logout</span>
-          </Link>
-        ) : (
-          <Link to="/login" className="icon login" title="Login">
-            <i className="fa-solid fa-sign-in"></i>
-            <span>Login</span>
-          </Link>
-        )}
-
         <Link to="/wishlist" className="icon" title="Wishlist">
           <i className="fa-solid fa-heart"></i>
           {isAuth && wishlistState.length > 0 ? (
@@ -61,6 +38,16 @@ const Navbar = () => {
             <span className="badge">{cartState.length}</span>
           ) : null}
         </Link>
+
+        {isAuth ? (
+          <Link to="/profile" className="icon profile" title="Profile">
+            <i className="fa-solid fa-user"></i>
+          </Link>
+        ) : (
+          <Link to="/login" className="icon login" title="Login">
+            <i className="fa-solid fa-sign-in"></i>
+          </Link>
+        )}
       </div>
     </nav>
   );

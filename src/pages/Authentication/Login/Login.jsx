@@ -31,15 +31,17 @@ const Login = () => {
       setLoading(true);
       const { data } = await loginService(login.input);
       setLoading(false);
+
       toast.success(`Welcome back, ${data.foundUser.firstName}!`, {
         icon: "👋",
       });
 
       localStorage.setItem("isAuth", true);
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(data.foundUser));
+
       setToken(data.encodedToken);
 
-      setLogin({ ...login, input: { email: "", password: "" } });
       setIsAuth(true);
 
       navigate("/");
