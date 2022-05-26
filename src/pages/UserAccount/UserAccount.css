@@ -1,12 +1,13 @@
 .account-container {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .account-wrapper {
-  max-width: 20rem;
+  max-width: 25rem;
   height: max-content;
   margin: 1rem auto;
   border: 1px solid var(--bg-secondary);
+  border-radius: var(--border-radius);
 }
 
 .account-wrapper .account-tabs {
@@ -27,11 +28,7 @@
 }
 
 .account-wrapper .account-data {
-  padding: 1rem;
-}
-
-.account-wrapper .account-data > * {
-  padding: 0.25rem 0;
+  margin: 1rem;
 }
 
 /* User Profile */
@@ -52,6 +49,10 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.account-data .profile-container .profile-creds > * {
+  word-break: break-all;
 }
 
 .account-data .profile-container .profile-details .user-name {

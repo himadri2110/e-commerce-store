@@ -17,6 +17,7 @@ const AddressList = () => {
     setShowAddrModal(true);
   };
 
+  console.log(showAddrModal);
   return (
     <div className="address-container">
       <button

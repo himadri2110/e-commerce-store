@@ -1,11 +1,23 @@
 import "./AddressModal.css";
 import { useAddress } from "../../contexts/addressContext";
+import { useEffect } from "react";
+
+const dummyAddress = {
+  name: "John Cena",
+  street: "18, Aazaad Colony",
+  city: "Surat",
+  state: "Gujarat",
+  zipcode: "360029",
+  country: "India",
+  mobile: "9823500668",
+};
 
 export const AddressModal = ({ setShowAddrModal }) => {
   const {
     addressState: { formData, formError },
     dispatchAddress,
     submitFormHandler,
+    initialState,
   } = useAddress();
 
   const formInputHandler = (e) => {
@@ -28,6 +40,10 @@ export const AddressModal = ({ setShowAddrModal }) => {
       dispatchAddress({ type: "MOBILE_ERROR", payload: { mobileError } });
     }
   };
+
+  useEffect(() => {
+    dispatchAddress({ type: "SET_DUMMY_ADDR", payload: initialState });
+  }, []);
 
   return (
     <div className="address-form-wrapper">
@@ -162,6 +178,18 @@ export const AddressModal = ({ setShowAddrModal }) => {
             onClick={() => setShowAddrModal(false)}
           >
             Cancel
+          </button>
+        </div>
+
+        <div>
+          <button
+            className="btn outline-primary"
+            type="button"
+            onClick={() =>
+              dispatchAddress({ type: "SET_DUMMY_ADDR", payload: dummyAddress })
+            }
+          >
+            Fill with Dummy values
           </button>
         </div>
       </form>

@@ -94,6 +94,7 @@ const AddressProvider = ({ children }) => {
         dispatchAddress,
         submitFormHandler,
         deleteAddressHandler,
+        initialState,
       }}
     >
       {children}

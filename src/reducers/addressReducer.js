@@ -10,6 +10,7 @@ const initialUserObj = {
 
 const initialState = {
   addresses: [],
+  selectedAddrId: null,
   formData: initialUserObj,
   formError: {
     zipcodeError: false,
@@ -20,11 +21,18 @@ const initialState = {
 const addressReducer = (state, { type, payload }) => {
   switch (type) {
     case "GET_ADDRESS":
-      return { ...state, addresses: payload };
+      return { ...state, addresses: payload, selectedAddrId: payload[0]._id };
+    case "SET_ADDRESS_ID":
+      return { ...state, selectedAddrId: payload };
     case "SET_INPUT":
       return {
         ...state,
         formData: { ...state.formData, [payload.name]: payload.value },
+      };
+    case "SET_DUMMY_ADDR":
+      return {
+        ...state,
+        formData: payload,
       };
     case "EDIT_INPUT":
       return { ...state, formData: payload.data };

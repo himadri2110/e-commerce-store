@@ -13,7 +13,7 @@
   margin-top: 0.5rem;
 }
 
-.input-group input {
+.address-form-wrapper .input-group input {
   border: none;
   border-radius: 0;
   background-color: inherit;
@@ -21,7 +21,7 @@
   font-size: 0.8rem;
 }
 
-.input-group .input-label {
+.address-form-wrapper .input-group .input-label {
   font-size: 0.8rem;
 
   flex-grow: 1;
@@ -34,11 +34,11 @@
   border: 1px solid var(--primary-color);
 }
 
-.input-group .input-label:focus-within {
+.address-form-wrapper .input-group .input-label:focus-within {
   border-width: 2px;
 }
 
-.input-group .input-label div {
+.address-form-wrapper .input-group .input-label div {
   opacity: 0.8;
 }
 
