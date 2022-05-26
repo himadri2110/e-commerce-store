@@ -16,6 +16,12 @@ import { addToWishlist } from "../services/wishlistServices/addToWishlist";
 import { useWishlist } from "./wishlistContext";
 import { cartReducer } from "../reducers/cartReducer";
 import { toast } from "react-hot-toast";
+import { getPrice, getDiscountInPrice } from "../utils/cartPrice";
+
+const coupons = [
+  { id: 1, discount: 10, minPrice: 1500, name: "New Year Sale" },
+  { id: 2, discount: 50, minPrice: 3000, name: "Clearance Sale" },
+];
 
 const CartContext = createContext();
 
@@ -24,6 +30,14 @@ const CartProvider = ({ children }) => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { token, isAuth, navigate } = useAuth();
   const [loading, setLoading] = useState(false);
+
+  const [selectedCoupon, setSelectedCoupon] = useState({});
+
+  const cartPrice = {
+    deliveryCharges: 49,
+    price: getPrice(cartState),
+    discountInPrice: getDiscountInPrice(cartState),
+  };
 
   useEffect(() => {
     if (isAuth) {
@@ -39,7 +53,7 @@ const CartProvider = ({ children }) => {
         console.error(err);
       }
     }
-  }, [isAuth]);
+  }, [isAuth, cartState]);
 
   const addToCartHandler = async (product) => {
     if (isAuth) {
@@ -106,11 +120,16 @@ const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cartState,
+        cartDispatch,
         addToCartHandler,
         removeFromCartHandler,
         updateQtyHandler,
         moveToWishlistHandler,
         loading,
+        coupons,
+        selectedCoupon,
+        setSelectedCoupon,
+        cartPrice,
       }}
     >
       {children}
