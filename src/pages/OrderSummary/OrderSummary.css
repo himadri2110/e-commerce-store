@@ -56,16 +56,16 @@
 
 @media screen and (max-width: 600px) {
   .order-summary-wrapper {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 450px) {
   .order-summary-wrapper .order-product {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .order-summary-wrapper .order-product img {
-    width: 80%;
+    width: 50%;
   }
 }

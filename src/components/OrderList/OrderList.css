@@ -38,10 +38,10 @@
 
 @media screen and (max-width: 480px) {
   .orders-container .order-product {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .orders-container .order-product img {
-    width: 80%;
+    width: 50%;
   }
 }

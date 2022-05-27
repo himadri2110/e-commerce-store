@@ -90,3 +90,15 @@
   background-color: var(--primary-disabled);
   cursor: not-allowed;
 }
+
+@media screen and (max-width: 900px) {
+  .checkout-container .checkout-wrapper {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkout-container .checkout-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
