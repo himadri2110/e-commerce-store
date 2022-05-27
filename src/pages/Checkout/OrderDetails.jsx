@@ -61,7 +61,7 @@ export const OrderDetails = () => {
 
     const options = {
       key: "rzp_test_SP206ka3zuV4SX",
-      amount: totalPrice * 100,
+      amount: (totalPrice - discountedCouponPrice) * 100,
       currency: "INR",
       name: "Essence",
       description: "Thank you for shopping with us",
