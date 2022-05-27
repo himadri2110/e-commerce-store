@@ -34,6 +34,11 @@
   align-items: center;
 }
 
+.filter-wrapper label,
+.filter-wrapper input[type="range"] {
+  cursor: pointer;
+}
+
 /* Hide filter icon on large screens */
 
 .product-sidebar button {
