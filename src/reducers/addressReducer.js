@@ -46,9 +46,11 @@ const addressReducer = (state, { type, payload }) => {
         ...state,
         formError: { ...state.formError, mobileError: payload.mobileError },
       };
+    case "RESET_FORM":
+      return { ...state, formData: payload };
     default:
       return state;
   }
 };
 
-export { addressReducer, initialState };
+export { addressReducer, initialState, initialUserObj };

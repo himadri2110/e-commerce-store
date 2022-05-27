@@ -17,7 +17,7 @@ export const AddressModal = ({ setShowAddrModal }) => {
     addressState: { formData, formError },
     dispatchAddress,
     submitFormHandler,
-    initialState,
+    initialUserObj,
   } = useAddress();
 
   const formInputHandler = (e) => {
@@ -42,7 +42,8 @@ export const AddressModal = ({ setShowAddrModal }) => {
   };
 
   useEffect(() => {
-    dispatchAddress({ type: "SET_DUMMY_ADDR", payload: initialState });
+    return () =>
+      dispatchAddress({ type: "RESET_FORM", payload: initialUserObj });
   }, []);
 
   return (

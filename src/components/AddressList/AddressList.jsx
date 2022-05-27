@@ -13,8 +13,8 @@ const AddressList = () => {
   const [showAddrModal, setShowAddrModal] = useState(false);
 
   const editAddress = (data) => {
-    dispatchAddress({ type: "EDIT_INPUT", payload: { data } });
     setShowAddrModal(true);
+    dispatchAddress({ type: "EDIT_INPUT", payload: { data } });
   };
 
   return (

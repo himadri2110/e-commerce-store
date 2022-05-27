@@ -7,7 +7,11 @@ import {
   deleteAddressService,
 } from "../services/addressServices";
 import { useAuth } from "./authContext";
-import { addressReducer, initialState } from "../reducers/addressReducer";
+import {
+  addressReducer,
+  initialState,
+  initialUserObj,
+} from "../reducers/addressReducer";
 
 const AddressContext = createContext();
 
@@ -95,6 +99,7 @@ const AddressProvider = ({ children }) => {
         submitFormHandler,
         deleteAddressHandler,
         initialState,
+        initialUserObj,
       }}
     >
       {children}
