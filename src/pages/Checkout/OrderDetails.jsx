@@ -169,7 +169,7 @@ export const OrderDetails = () => {
       </div>
 
       <button
-        className="btn btn-primary"
+        className="btn btn-primary place-order"
         disabled={!selectedAddrId}
         onClick={displayRazorpay}
       >

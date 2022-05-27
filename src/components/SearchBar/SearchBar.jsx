@@ -15,24 +15,36 @@ const SearchBar = () => {
   const location = useLocation();
 
   const navigateToProducts = () => {
-    if (searchVal.trim() !== "" && location.pathname !== "/products") {
+    if (location.pathname !== "/products") {
       navigate("/products");
     }
+  };
+
+  const onChangeHandler = (e) => {
+    productDispatch({
+      type: CLEAR_FILTERS,
+      payload: { data: productState.products },
+    });
+    setSearchVal(e.target.value);
+    navigateToProducts();
+  };
+
+  const debounce = (fn, delay = 500) => {
+    let timer = 0;
+
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    };
   };
 
   return (
     <input
       type="text"
       placeholder="Search"
-      value={searchVal}
-      onChange={(e) => {
-        productDispatch({
-          type: CLEAR_FILTERS,
-          payload: { data: productState.products },
-        });
-        setSearchVal(e.target.value);
-      }}
-      onKeyUp={navigateToProducts}
+      onChange={debounce(onChangeHandler, 500)}
     />
   );
 };
