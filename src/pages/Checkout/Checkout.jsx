@@ -1,8 +1,10 @@
 import "./Checkout.css";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import { useAddress } from "../../contexts/addressContext";
+import { useCart } from "../../contexts/cartContext";
 import { OrderDetails } from "./OrderDetails";
 
 export const Checkout = () => {
@@ -10,6 +12,15 @@ export const Checkout = () => {
     addressState: { addresses, selectedAddrId },
     dispatchAddress,
   } = useAddress();
+  const { cartState } = useCart();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cartState.length === 0) {
+      navigate("/products");
+    }
+  }, [cartState]);
 
   return (
     <div className="page-wrapper">
