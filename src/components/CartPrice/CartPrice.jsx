@@ -43,7 +43,8 @@ const CartPrice = () => {
       <div className="sub-price">
         <div className="price">
           <div className="text">
-            Price (<span className="quantity">{cartState.length}</span> items)
+            Price (<span className="quantity">{cartState.length}</span>{" "}
+            <span>{cartState.length === 1 ? "item" : "items"}</span>)
           </div>
           <div className="value">&#8377; {cartPrice.price}</div>
         </div>

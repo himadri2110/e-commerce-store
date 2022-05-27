@@ -61,7 +61,9 @@ const SingleProduct = () => {
               </div>
 
               <div className="card-body">
-                <div className="card-heading">{currentProduct.title}</div>
+                <div className="card-heading" title={currentProduct.title}>
+                  {currentProduct.title}
+                </div>
 
                 <div className="rating">
                   {currentProduct.rating} <i className="fa-solid fa-star"></i>

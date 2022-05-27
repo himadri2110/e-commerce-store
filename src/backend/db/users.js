@@ -28,7 +28,7 @@ export const users = [
       },
       {
         _id: uuid(),
-        name: "Adarsh Balika",
+        name: "Vikrant Sharma",
         street: "M.G. Road",
         city: "Bangalore",
         state: "Karnataka",
