@@ -1,0 +1,49 @@
+.address-modal .btn {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.address-container .add-address {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.address-container .address-list {
+  margin: 1rem 0;
+}
+
+.address-list .address {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.address-list .address .name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.address-list .address > p {
+  font-size: 0.9rem;
+}
+
+.address-list .address-action {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.address-list .address-action .btn {
+  font-size: 0.8rem;
+  padding: 0.125rem 0.25rem;
+}
+
+.address-container .address-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}

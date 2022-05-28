@@ -1,0 +1,129 @@
+.checkout-container .heading-3 {
+  font-size: var(--heading-3);
+  font-weight: bold;
+  text-align: center;
+}
+
+.checkout-container .checkout-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 80%;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.checkout-address .address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkout-address .address {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--bg-secondary);
+}
+
+.checkout-address .address .address-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.checkout-address .add-address {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.checkout-container .address-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.checkout-address input[type="radio"] {
+  accent-color: var(--primary-color);
+}
+
+.checkout-container .order-details {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--bg-secondary);
+  height: max-content;
+}
+
+.checkout-container .order-items-wrapper {
+  padding: 0.5rem;
+}
+
+.checkout-container .title {
+  width: initial;
+  text-align: center;
+  padding: 0.25rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.checkout-container .address-title {
+  text-align: initial;
+  border-bottom: initial;
+}
+
+.checkout-container .item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.checkout-container .order-items .item {
+  gap: 0.5rem;
+}
+
+.checkout-container .addr-item {
+  font-size: 0.9rem;
+}
+
+.checkout-container .btn-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.checkout-container .btn-link:hover {
+  text-decoration: underline;
+}
+
+.checkout-container .place-order {
+  width: -webkit-fill-available;
+  margin: 1rem 0.5rem;
+  font-size: 1.1rem;
+}
+
+.checkout-container .btn-primary:disabled {
+  background-color: var(--primary-disabled);
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 900px) {
+  .checkout-container .checkout-wrapper {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkout-container .checkout-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,14 +10,17 @@
 }
 
 .cart-price .price,
-.cart-price .total-price {
+.cart-price .total-price,
+.cart-price .selected-coupon,
+.cart-price .grand-total {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
 }
 
-.cart-price .total-price {
+.cart-price .total-price,
+.cart-price .grand-total {
   font-weight: bold;
 }
 
@@ -32,4 +35,37 @@
 .cart-price .discount-msg {
   padding: 0.5rem 0;
   font-size: 0.9rem;
+  color: var(--success-color);
+}
+
+.cart-price .coupon-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.cart-price .selected-coupon {
+  color: var(--primary-color);
+}
+
+.cart-price .selected-coupon i {
+  margin-right: 0.25rem;
+  color: var(--danger-color);
+}
+
+.cart-price .apply-coupon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.cart-price .btn-apply {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  width: max-content;
 }
