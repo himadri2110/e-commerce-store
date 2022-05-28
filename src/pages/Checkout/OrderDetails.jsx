@@ -29,7 +29,7 @@ export const OrderDetails = () => {
 
   const discountedCouponPrice = (totalPrice * selectedCoupon.discount) / 100;
 
-  const currentAddress = addresses.find(
+  const currentAddress = addresses?.find(
     (address) => address._id === selectedAddrId
   );
 
@@ -61,7 +61,10 @@ export const OrderDetails = () => {
 
     const options = {
       key: "rzp_test_SP206ka3zuV4SX",
-      amount: (totalPrice - discountedCouponPrice) * 100,
+      amount:
+        (discountedCouponPrice
+          ? totalPrice - discountedCouponPrice
+          : totalPrice) * 100,
       currency: "INR",
       name: "Essence",
       description: "Thank you for shopping with us",

@@ -21,7 +21,11 @@ const initialState = {
 const addressReducer = (state, { type, payload }) => {
   switch (type) {
     case "GET_ADDRESS":
-      return { ...state, addresses: payload, selectedAddrId: payload[0]._id };
+      return {
+        ...state,
+        addresses: payload,
+        selectedAddrId: payload ? payload[0]?._id : null,
+      };
     case "SET_ADDRESS_ID":
       return { ...state, selectedAddrId: payload };
     case "SET_INPUT":

@@ -1,6 +1,6 @@
 import "./Checkout.css";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import { useAddress } from "../../contexts/addressContext";
@@ -37,8 +37,8 @@ export const Checkout = () => {
             <div className="address-title title">Select Address</div>
 
             <div className="address-list">
-              {addresses.length ? (
-                addresses.map((address) => (
+              {addresses?.length ? (
+                addresses?.map((address) => (
                   <label className="address" key={address._id}>
                     <input
                       type="radio"
@@ -66,14 +66,7 @@ export const Checkout = () => {
                   </label>
                 ))
               ) : (
-                <>
-                  <p>No address available.</p>
-                  <p>
-                    <Link className="btn-link" to={"/profile/addresses"}>
-                      Add address
-                    </Link>
-                  </p>
-                </>
+                <p>No address available.</p>
               )}
             </div>
 

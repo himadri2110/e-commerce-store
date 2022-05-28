@@ -9,7 +9,7 @@ const OrderList = () => {
 
   return (
     <div className="orders-container">
-      {orders.length ? (
+      {orders?.length ? (
         [...orders].reverse().map((order) => {
           const { paymentId, orderId, amount, delivery, products } = order;
           return (

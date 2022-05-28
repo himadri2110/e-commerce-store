@@ -27,8 +27,8 @@ const AddressList = () => {
       </button>
 
       <div className="address-list">
-        {addresses.length ? (
-          addresses.map((address) => (
+        {addresses?.length ? (
+          addresses?.map((address) => (
             <div key={address._id} className="address">
               <p className="name">{address.name}</p>
               <p>{address.street},</p>
@@ -54,18 +54,17 @@ const AddressList = () => {
                   Delete
                 </button>
               </div>
-
-              {showAddrModal ? (
-                <div className="address-modal">
-                  <AddressModal setShowAddrModal={setShowAddrModal} />
-                </div>
-              ) : null}
             </div>
           ))
         ) : (
           <p>No address found.</p>
         )}
       </div>
+      {showAddrModal ? (
+        <div className="address-modal">
+          <AddressModal setShowAddrModal={setShowAddrModal} />
+        </div>
+      ) : null}
     </div>
   );
 };

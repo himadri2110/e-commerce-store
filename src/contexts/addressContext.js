@@ -42,7 +42,7 @@ const AddressProvider = ({ children }) => {
   const submitFormHandler = async (e) => {
     e.preventDefault();
 
-    const addressExists = addressState.addresses.find(
+    const addressExists = addressState.addresses?.find(
       (address) => address._id === addressState.formData?._id
     );
 
