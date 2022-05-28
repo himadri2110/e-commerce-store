@@ -3,7 +3,7 @@ import { useAddress } from "../../contexts/addressContext";
 import { useEffect } from "react";
 
 const dummyAddress = {
-  name: "John Cena",
+  name: "Nandini Gandhi",
   street: "18, Aazaad Colony",
   city: "Surat",
   state: "Gujarat",

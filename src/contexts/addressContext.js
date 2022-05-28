@@ -37,7 +37,7 @@ const AddressProvider = ({ children }) => {
         console.error(err);
       }
     }
-  }, [token]);
+  }, [token, isAuth]);
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
