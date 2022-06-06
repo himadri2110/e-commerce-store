@@ -107,18 +107,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                <div className="input-group input-checkbox checkbox-forgetpwd">
-                  <label className="input-label">
-                    <input type="checkbox" /> Remember Me
-                  </label>
-                  <a
-                    href="/pages/forget-pwd.html"
-                    className="link-primary forgot-pwd"
-                  >
-                    <span className="primary">Forgot Password?</span>
-                  </a>
-                </div>
-
                 <button className="btn btn-primary" type="submit">
                   Log In
                 </button>
